@@ -1,6 +1,6 @@
 # MySQL + Data Integrator + Data Science Workshop
 
-![Oracle](images/banner.png)
+![Oracle Workshop](./images/banner.png)
 
 ## Conversational Approach to Your Applications
 
