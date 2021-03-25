@@ -1,4 +1,4 @@
-# MySQL + Data Integrator + Data Science Workshop
+# MySQL, Data Integration and Data Science Workshop
 
 ![Oracle Workshop](./images/banner.png)
 
