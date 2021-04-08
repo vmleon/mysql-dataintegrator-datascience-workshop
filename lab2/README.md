@@ -51,22 +51,6 @@ The provisioning is around 10 minutes. The icon should change to `ACTIVE`:
 
 ## Connect and create DB
 
-Open port on Security list: `3306` and `33060`.
-
-Bastion host? XXX
-
-`sudo yum install docker-engine -y`
-
-`sudo systemctl start docker`
-
-`sudo systemctl status docker`
-
-`sudo systemctl enable docker`
-
-`sudo docker run -it --rm --name mysql mysql/mysql-server bash`
-
-`\connect root@10.0.1.10`
-
 Create user.
 
 XXX
