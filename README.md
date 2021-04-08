@@ -21,21 +21,27 @@ You don't want to spend a dime until you are happy with the workflow.
 - Create Your Free Trial Account
 - Sign in to Your Account
 
-[Lab 1: Create MySQL Database Service](lab1/README.md)
+[Lab 1: Requirements](lab1/README.md)
+
+- Create Virtual Cloud Network (VCN)
+- Create Bastion Host
+- Create Object Storage and upload files
+
+[Lab 2: Create MySQL Database Service](lab2/README.md)
 
 - Create an instance of MySQL in the cloud
 - XXX
 
-[Lab 2: Create Data Integrator instance](lab2/README.md)
+[Lab 3: Create Data Integrator instance](lab3/README.md)
 
 - Create Your OCI Data Integrator instance
 - XXX
 
-[Lab 3: Design and Run your ETL pipeline](lab3/README.md)
+[Lab 4: Design and Run your ETL pipeline](lab4/README.md)
 
 - XXX
 
-[Lab 4: Transform your Data into Insights](lab4/README.md)
+[Lab 5: Transform your Data into Insights](lab5/README.md)
 
 - XXX
 

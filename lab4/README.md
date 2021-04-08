@@ -1,8 +1,8 @@
-# Lab 4: Transform your Data into Insights
+# Lab 4: Design and Run your ETL pipeline
 
-![Data Science](./images/ds_banner.jpg)
+![DI Pipeline](./images/pipeline_banner.jpeg)
 
-**Oracle Data Science** XXX.
+XXX.
 
 ## XXX
 
@@ -14,4 +14,4 @@ Continue to the Next Steps for more information!
 
 ---
 
-[**<< Go to Lab 3**](../lab3/README.md) | [Home](../README.md) | [**Next Steps >>>>>**](../next/README.md)
+[**<< Go to Lab 3**](../lab3/README.md) | [Home](../README.md) | [**Go to Lab 5 >>>>>**](../lab5/README.md)
