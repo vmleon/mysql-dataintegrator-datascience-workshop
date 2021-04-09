@@ -24,6 +24,16 @@ Review all the details and click **Create**.
 
 The creation process takes few seconds. Confirm everything is created (green tick on all resources) before you continue.
 
+Go to your new `Private Subnet-nature` and click `Security List for Private Subnet-nature`.
+
+Click `Add Ingress Rules` and fill the form with the following information:
+
+> Source CIDR: `10.0.0.0/24`
+> Destination Port Range: `3306,33060`
+> Description: `MySQL and MySQL X Protocol`
+
+Leave the rest of fields with default values.
+
 ## Create Bastion Host
 
 We are going to create a compute in the Public Subnet with a public IP, it will be our access point to public and private resources.
@@ -83,7 +93,9 @@ If `active` then enable Docker as service
 > 
 > `sudo usermod -aG docker $USER`
 
-Let's run Mysql Shell as a docker container:
+Let's pull and run Mysql Shell as a docker container:
+
+`sudo docker pull mysql/mysql-server`
 
 `sudo docker run -it --rm --name mysql mysql/mysql-server bash`
 
