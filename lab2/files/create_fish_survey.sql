@@ -20,7 +20,7 @@ CREATE TABLE fish (
   family VARCHAR(100),
   taxon VARCHAR(200),
   block_number TINYINT UNSIGNED,
-  dotal INT UNSIGNED,
+  total INT UNSIGNED,
   diver VARCHAR(50),
   geom VARCHAR(100),
   PRIMARY KEY (id)

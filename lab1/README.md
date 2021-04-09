@@ -28,7 +28,7 @@ Go to your new `Private Subnet-nature` and click `Security List for Private Subn
 
 Click `Add Ingress Rules` and fill the form with the following information:
 
-> Source CIDR: `10.0.0.0/24`
+> Source CIDR: `10.0.0.0/16`
 > Destination Port Range: `3306,33060`
 > Description: `MySQL and MySQL X Protocol`
 

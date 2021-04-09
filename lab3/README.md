@@ -53,147 +53,126 @@ Go to Menu > Data Integration.
 
 Click **Create Workspace**.
 
-Workspace name. Select VCN and Private Subnet.
+Modify the following fields, leave the rest as default:
+
+> Name: `Workspace Nature`
+> VCN: `nature`
+> Subnet: `Private subnet-nature`
+
+Click **Create**.
+
+You will see the new workspace in Creating status.
+
+![](images/ocidi_workspace_creating.png)
 
 Wait for provisioning. (~9min)
 
-## Create the source of data
+You will see a success creation.
 
-You can select different sources for the data. Different types of databases are supported, but for simplicity we are going to upload two files to Object Storage.
+![](images/ocidi_workspace_success.png)
 
-### Create a Bucket
+Click on the new `Workspace Nature`.
 
-Menu > Object Storage > Object Storage
+You can see that by default there is a `Default Application` and a project `My First Project`.
 
-Click **Create Bucket**.
-
-> Bucket Name: Source
-> Storage Tier: Standard
-
-Click **Create**.
-
-### Upload files
-
-Click **Upload** on the Objects section.
-
-Click the link **select files**.
-
-Select `titanic.csv` from your file system.
-
-Click **Upload**.
-
-XXX Second file
-
-Get Object Storage URL
+The first task is to create the data assets that represent the source and target for the data integration. In our case, the data source is an Object Storage bucket and the target is our MySQL database.
 
 ## Create the pipeline
 
-Get back to Data Integration and click on the workspace created.
+Click **Create Data Asset**.
 
-Click **Create Data Assets**
+Fill the fields as follows:
 
-> Name: `os-source`
+> Name: `bucket-study`
+> Description: `Object Storage Bucket with fish survey`
 > Type: `Oracle Object Storage`
+> URL: `https://objectstorage.<REGION>.oraclecloud.com`
+> Tenancy OCID: `ocid1.tenancy.oc1..muahahahahahahahaha`
+>
+> Wait few seconds and OS Namespace will be retrieved automatically
 
-Get Tenancy OCID and Object Storage Namespace
+Get Object Storage URL
 
 XXX
 
-> URL: `https://objectstorage.<REGION>.oraclecloud.com`
-> Tenancy OCID: `ocid1.tenancy.oc1..muahahahahahahahaha`
-> Namespace: `Object Storage Namespace`
-
-Get Tenancy OCID and Object Storage Namespace
+Get Tenancy OCID
 
 XXX
 
-> URL: `https://objectstorage.<REGION>.oraclecloud.com`
-> Tenancy OCID: `ocid1.tenancy.oc1..muahahahahahahahaha`
-> Namespace: `Object Storage Namespace`
+You can test the connection.
 
 Click **Create**.
 
-Go back to Data Assets and Click **Create Data Assets** again. This time we are going to create the MySQL database asset
+Go back to Home and Click **Create Data Assets** again. This time we are going to create the MySQL database asset with the following values:
 
-> Name: `mysql-dest`
+> Name: `mysql-database`
+> Description: `MySQL Database for Analytics`
 > Type: `MySQL`
 > Host: `10.0.1.x` (from MySQL created instance)
 > Port: `3306`
-> Database: `database`
+> Database: `nature`
 > User: `root`
-> Password: `R2d2&C3pO!`
+> Password: `R2d2&C3po!`
+
+You can test the connection.
 
 Click **Create**.
 
-## Data Loader Task
+Go back to Home and Click **Create Data Flow**.
+
+Set the Name, Project and Description in the New Data Flow Panel
+
+> Name: `CSV to MySQL`
+> Project or Folder: `My First Project`
+> Description: `Data Flow from CSV on Object Storage to MySQL Database`
+
+Drag and Drop the Source icon into the canvas.
+
+Set the Identifier and the rest of the info in the Source:
+
+> Identifier: `Fish_Survey`
+> Data Asset: `bucket-study`
+> Connection: `Default Connection`
+> Schema: `bucket-study`
+> Data entity: click **Browse By Name** and select `reef_life_survey_fish.csv`, all the default values are good, click **Select**.
+
+Confirm you can see attributes and Data.
+
+Drag and Drop the Target icon into the canvas.
+
+Set the Identifier and the rest of the info in the Target:
+
+> Identifier: `MySQL DB`
+> Data Asset: `mysql-database`
+> Connection: `Default Connection`
+> Schema: `nature`
+> Data entity: `fish`
+
+Confirm you can see attributes.
+
+Connect `FISH_SURVEY` with `MYSQL_DB`.
+
+Map manually the attributes until they are all mapped.
+
+Click **Save and Close**.
+
+
+Click **Create Integration Task**.
+
+Set the Name and the rest of the info as follows:
+
+> Name: `IntegrationTaskMySQL`
+> Description: `Integration Task MySQL`
+> Project or Folder: `My First Project`
+> Data Flow: `CSV to MySQL`
+
+Click **Save and Close**.
+
+Publish to Application. XXX
+
+Run Task. XXX
 
 XXX
-
-Data **Flow**
-
-A data flow is a logical diagram representing the flow of data from source data assets, such as a flat file, to target data assets, such as a data warehouse.
-
-The flow of data from source to target can undergo a series of transformations to aggregate, cleanse, and shape the data. Data engineers and ETL developers can then analyze or gather insights for business decisions.
-
-Steps:
-
-- Create a project where you can save your data flow.
-- Add source operators and select the data entities to use in the data flow.
-- Use shaping operators and apply transformations.
-- Identify the target data asset for loading the data.
-
-On your workspace Home page, in the **Quick Actions** tile, click **Create Project**.
-
-> Name: `Marine-Life-Project`
-
-Click **Create**.
-
-On the side menu called **Details** click on **Data Flows**.
-
-Then click **Create Data Flow**.
-
-Customize the name of your data flow:
-
-> Name: `Load marine life data into MySQL`
-
-Let's add our data source, from the **Operators** panel, drag and drop a **Source** operator onto the canvas.
-
-Rename `SOURCE_1` to something more accurate like:
-
-> Identifier: `OS_SOURCE`
-> Data Asset: click **Select** and pick `os_source`. Click **Select** to confirm.
-> Connection: click **Select** and pick `Default Connection`. Click **Select** to confirm.
-> Schema: click **Select** and pick compartment `root` and schema `xxxx`. Click **Select** to confirm.
-> Data Entity: XXX
-
-Filter data: XXX
-[Filter](https://docs.oracle.com/en-us/iaas/data-integration/tutorial/tutorials/03-ingest-and-transform-data-using-a-data-flow.htm#filtering-and-transforming-data)
-
-Join Data: XXX
-[Join](https://docs.oracle.com/en-us/iaas/data-integration/tutorial/tutorials/03-ingest-and-transform-data-using-a-data-flow.htm#adding-a-target-operator)
-
-Filter data: XXX
-[Filter](https://docs.oracle.com/en-us/iaas/data-integration/tutorial/tutorials/03-ingest-and-transform-data-using-a-data-flow.htm#filtering-and-transforming-data)
-
-Join Data: XXX
-[Join](https://docs.oracle.com/en-us/iaas/data-integration/tutorial/tutorials/03-ingest-and-transform-data-using-a-data-flow.htm#adding-a-target-operator)
-
-
-Let's add our data destination, from the **Operators** panel, drag and drop a **Target** operator onto the canvas.
-
-Rename `TARGET_1` to something more accurate like:
-
-> Identifier: `MYSQL`
-> Data Asset: click **Select** and pick `mysql`. Click **Select** to confirm.
-> Connection: click **Select** and pick `Default Connection`. Click **Select** to confirm.
-> Schema: click **Select** and pick schema `test_schema`. Click **Select** to confirm.
-> Data Entity: XXX Check **Create New Data Entity** ??
-
-Create the link between `OS_SOURCE` and `MYSQL`. XXX
-
-Create Tasks: XXX Integration??. Select Data Flow.
-
-Publish to your Default **Application**. XXX
 
 ## It works
 
