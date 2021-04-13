@@ -4,7 +4,7 @@
 
 ## Conversational Approach to Your Applications
 
-This workshop walks you through the steps to use **MySQL Database Service**, **Data Integrator** and **Data Science** to extract a dataset, apply some transformations, load the data into MySQL and run analytics with Jupyter Notebook.
+This workshop walks you through the steps to use **MySQL Database System**, **Data Integrator** and **Data Science** to extract a dataset, apply some transformations, load the data into MySQL and run analytics with Jupyter Notebook.
 
 ## Who Should Do This Workshop
 
@@ -27,7 +27,7 @@ You don't want to spend a dime until you are happy with the workflow.
 - Create Bastion Host
 - Create Object Storage and upload files
 
-[Lab 2: Create MySQL Database Service](lab2/README.md)
+[Lab 2: Create MySQL Database System](lab2/README.md)
 
 - Create an instance of MySQL in the cloud
 - XXX

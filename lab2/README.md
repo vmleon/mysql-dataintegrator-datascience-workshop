@@ -1,8 +1,8 @@
-# Lab 2: Create MySQL Database Service
+# Lab 2: Create MySQL Database System
 
-![MySQL Database Service](./images/mds_banner.png)
+![MySQL Database System](./images/mds_banner.png)
 
-**MySQL Database Service** XXX.
+**MySQL Database System** XXX.
 
 ## Create an instance of MySQL in the cloud
 
@@ -51,13 +51,27 @@ Copy the private IP address from the MySQL DB System Information page.
 
 From your bastion host with MySQL Shell we are going to prepare your MySQL Database for the data.
 
-Create database, and table. Download the file [Create Fish Survey](./files/create_fish_survey.sql).
+SSH into the bastion host and type:
+
+Download the file [Create Fish Survey](./files/create_fish_survey.sql).
+
+Copy the file into the bastion host with:
+
+`scp -i ./path/to/private_key create_fish_survey.sql opc@<PUBLIC_IP>:home/opc/`
+
+Run a docker image with MySQL Shell:
+
+`sudo docker run -it --rm --name mysql -v $(pwd):/tmp mysql/mysql-server bash`
 
 Run the script with:
 
 ```
-cat create_fish_survey.sql | mysqlsh --sql root@<PRIVATE_IP>
+cat /tmp/create_fish_survey.sql | mysqlsh --sql root@<PRIVATE_IP>
 ```
+
+It will ask for the password (`Please provide the password for 'root@PRIVATE_IP':`). Type the MySQL DB password.
+
+If there is no error on the console, everything is ready to proceed.
 
 ## Enable HeatWave
 

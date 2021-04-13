@@ -101,9 +101,7 @@ Let's pull and run Mysql Shell as a docker container:
 
 When in the docker container, type `mysqlsh`
 
-Connect to MDS:
-
-`\connect root@<MDS_PRIVATE_IP>`
+We will use the bastion host and `mysqlsh` on Lab 2.
 
 ## Create Object Storage and upload files
 

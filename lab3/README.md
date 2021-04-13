@@ -63,13 +63,13 @@ Click **Create**.
 
 You will see the new workspace in Creating status.
 
-![](images/ocidi_workspace_creating.png)
+![Creating DI Workspace](images/ocidi_workspace_creating.png)
 
 Wait for provisioning. (~9min)
 
 You will see a success creation.
 
-![](images/ocidi_workspace_success.png)
+![Success DI creation](images/ocidi_workspace_success.png)
 
 Click on the new `Workspace Nature`.
 
@@ -77,7 +77,7 @@ You can see that by default there is a `Default Application` and a project `My F
 
 The first task is to create the data assets that represent the source and target for the data integration. In our case, the data source is an Object Storage bucket and the target is our MySQL database.
 
-## Create the pipeline
+## Create the Data Assets
 
 Click **Create Data Asset**.
 
@@ -118,6 +118,8 @@ You can test the connection.
 
 Click **Create**.
 
+## Create the Data Flow
+
 Go back to Home and Click **Create Data Flow**.
 
 Set the Name, Project and Description in the New Data Flow Panel
@@ -130,7 +132,7 @@ Drag and Drop the Source icon into the canvas.
 
 Set the Identifier and the rest of the info in the Source:
 
-> Identifier: `Fish_Survey`
+> Identifier: `FISH_SURVEY`
 > Data Asset: `bucket-study`
 > Connection: `Default Connection`
 > Schema: `bucket-study`
@@ -148,7 +150,7 @@ Set the Identifier and the rest of the info in the Target:
 > Schema: `nature`
 > Data entity: `fish`
 
-Confirm you can see attributes.
+Confirm you can see attributes and data.
 
 Connect `FISH_SURVEY` with `MYSQL_DB`.
 
@@ -156,8 +158,9 @@ Map manually the attributes until they are all mapped.
 
 Click **Save and Close**.
 
+## Create the Integration Task
 
-Click **Create Integration Task**.
+Go back to Home and Click **Create Integration Task**.
 
 Set the Name and the rest of the info as follows:
 
@@ -168,15 +171,35 @@ Set the Name and the rest of the info as follows:
 
 Click **Save and Close**.
 
-Publish to Application. XXX
+## Publish the Integration Task
 
-Run Task. XXX
+Go to **Projects**.
 
-XXX
+Click on **My First Project**.
+
+On the Details menu (left), click on **Tasks**.
+
+Select **IntegrationTaskMySQL** and click **Publish to Application**.
+
+Select (if not selected by default) your **Default Application**. Click **Publish**.
+
+## Run the Task
+
+Go back **Home** and click **Applications**.
+
+Select **Default Application** and you will see your task **IntegrationTaskMySQL**.
+
+Click on the context menu (three dots) and click **Run**.
+
+Wait few seconds and the Status will change from `Not Started` to `Queued`, then to `Running`. Feel free to click **Refresh** from time to time until you see `Success` on the Status.
 
 ## It works
 
-XXX.
+On the bastion host, in `mysqhlsh` run a query to check the number of rows in `fish` table.
+
+```sql
+select count(1) from fish;
+```
 
 ## Congratulations, you are ready for the next Lab!
 
