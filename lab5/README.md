@@ -55,59 +55,36 @@ The status icon will change from Creating to Active:
 
 When the Notebook is active, click **Open**.
 
+## Install libraries
+
+Click **Terminal**.
+
+`pip install mysql-connector-python pandas seaborn`
+
+Wait for the installation to complete.
+
 ## Create Jupyter Notebook environment
 
-Click on Notebook **Python [conda env:root]**.
+Click on **+** to open the Launcher again.
 
-Click **File** > **Rename Notebook...** and use a better name like:
+Download the Notebook [here](files/FishSurvey.ipynb).
 
-> New Name: `FishSurvey.ipynb`
+Click **Upload files** and select `FishSurvey.ipynb` from your disk.
 
-Click on **File** > **New Console for Notebook**.
+Click on **FishSurvey.ipynb** on the left list of files.
 
-Type
-
-`conda install -c anaconda mysql-connector-python`
-
-Wait for the confirmation of the MySQL connector installation.
+Make sure you modify `PRIVATE_IP` on the following code in the Notebook with the Private IP from your MySQL Database System.
 
 ```
-...
-Downloading and Extracting Packages
-protobuf-3.6.0       | 610 KB    | ##################################### | 100% 
-pyopenssl-19.1.0     | 47 KB     | ##################################### | 100% 
-ca-certificates-2020 | 128 KB    | ##################################### | 100% 
-libprotobuf-3.6.0    | 4.1 MB    | ##################################### | 100% 
-mysql-connector-pyth | 776 KB    | ##################################### | 100% 
-six-1.15.0           | 13 KB     | ##################################### | 100% 
-certifi-2020.6.20    | 160 KB    | ##################################### | 100% 
-openssl-1.1.1h       | 3.8 MB    | ##################################### | 100% 
-mysql-connector-c-6. | 2.7 MB    | ##################################### | 100% 
-Preparing transaction: done
-Verifying transaction: failed
-
-RemoveError: 'pyopenssl' is a dependency of conda and cannot be removed from
-conda's operating environment.
-
-
-Note: you may need to restart the kernel to use updated packages.
-```
-
-Restart Kernel by going to **Kernel** > **Restart Kernel...**. Confirm you want to proceed.
-
-Run the following command
-
-```
-import mysql.connector
-
-mydb = mysql.connector.connect(
-  host="MYSQL_PRIVATE_IP",
+cnx = mysql.connector.connect(
+  host="PRIVATE_IP",
   user="root",
-  passwd="R2d2&C3po!"
+  passwd="R2d2&C3po!",
+  database="nature"
 )
-
-print(mydb)
 ```
+
+Run the Notebook cell by cell clicking the **play** icon over and over until you reach the end.
 
 # Congratulations! Well done!
 

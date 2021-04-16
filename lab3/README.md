@@ -89,7 +89,7 @@ Fill the fields as follows:
 > URL: `https://objectstorage.<REGION>.oraclecloud.com`
 > Tenancy OCID: `ocid1.tenancy.oc1..muahahahahahahahaha`
 >
-> Wait few seconds and OS Namespace will be retrieved automatically
+> Click outside the Tenancy OCID field and after few seconds an OS Namespace will be retrieved automatically
 
 Get Object Storage URL
 
