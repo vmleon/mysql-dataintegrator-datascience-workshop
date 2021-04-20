@@ -56,7 +56,9 @@ Click **Create Workspace**.
 Modify the following fields, leave the rest as default:
 
 > Name: `Workspace Nature`
+> 
 > VCN: `nature`
+> 
 > Subnet: `Private subnet-nature`
 
 Click **Create**.
@@ -79,25 +81,41 @@ The first task is to create the data assets that represent the source and target
 
 ## Create the Data Assets
 
+We are going to need the Object Storage URL and Tenancy ID.
+
+### Get Object Storage URL
+
+Go to Object Storage > `bucket-study`.
+
+On your `reef_life_survey_fish.csv` click on the 3 dots contextual menu and click on **View Object Details**.
+
+Copy the first part of the URL, like here `https://objectstorage.eu-frankfurt-1.oraclecloud.com`.
+
+### Get Tenancy OCID
+
+Go to Profile > Tenancy.
+
+Copy the OCID. Write it down for the next step.
+
+> You can see that the Object Storage Namespace is here too, in case you need it in the future.
+
+Let's create the Data Asset now.
+
 Click **Create Data Asset**.
 
 Fill the fields as follows:
 
 > Name: `bucket-study`
+> 
 > Description: `Object Storage Bucket with fish survey`
+> 
 > Type: `Oracle Object Storage`
+> 
 > URL: `https://objectstorage.<REGION>.oraclecloud.com`
+> 
 > Tenancy OCID: `ocid1.tenancy.oc1..muahahahahahahahaha`
 >
-> Click outside the Tenancy OCID field and after few seconds an OS Namespace will be retrieved automatically
-
-Get Object Storage URL
-
-XXX
-
-Get Tenancy OCID
-
-XXX
+> Click outside the Tenancy OCID field and after few seconds an OS Namespace will be retrieved automatically.
 
 You can test the connection.
 
@@ -106,12 +124,19 @@ Click **Create**.
 Go back to Home and Click **Create Data Assets** again. This time we are going to create the MySQL database asset with the following values:
 
 > Name: `mysql-database`
+> 
 > Description: `MySQL Database for Analytics`
+> 
 > Type: `MySQL`
+> 
 > Host: `10.0.1.x` (from MySQL created instance)
+> 
 > Port: `3306`
+> 
 > Database: `nature`
+> 
 > User: `root`
+> 
 > Password: `R2d2&C3po!`
 
 You can test the connection.
@@ -125,7 +150,9 @@ Go back to Home and Click **Create Data Flow**.
 Set the Name, Project and Description in the New Data Flow Panel
 
 > Name: `CSV to MySQL`
+> 
 > Project or Folder: `My First Project`
+> 
 > Description: `Data Flow from CSV on Object Storage to MySQL Database`
 
 Drag and Drop the Source icon into the canvas.
@@ -133,9 +160,13 @@ Drag and Drop the Source icon into the canvas.
 Set the Identifier and the rest of the info in the Source:
 
 > Identifier: `FISH_SURVEY`
+> 
 > Data Asset: `bucket-study`
+> 
 > Connection: `Default Connection`
+> 
 > Schema: `bucket-study`
+> 
 > Data entity: click **Browse By Name** and select `reef_life_survey_fish.csv`, all the default values are good, click **Select**.
 
 Confirm you can see attributes and Data.
@@ -145,9 +176,13 @@ Drag and Drop the Target icon into the canvas.
 Set the Identifier and the rest of the info in the Target:
 
 > Identifier: `MySQL DB`
+> 
 > Data Asset: `mysql-database`
+> 
 > Connection: `Default Connection`
+> 
 > Schema: `nature`
+> 
 > Data entity: `fish`
 
 Confirm you can see attributes and data.
@@ -165,8 +200,11 @@ Go back to Home and Click **Create Integration Task**.
 Set the Name and the rest of the info as follows:
 
 > Name: `IntegrationTaskMySQL`
+> 
 > Description: `Integration Task MySQL`
+> 
 > Project or Folder: `My First Project`
+> 
 > Data Flow: `CSV to MySQL`
 
 Click **Save and Close**.

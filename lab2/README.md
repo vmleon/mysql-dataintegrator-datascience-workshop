@@ -80,6 +80,8 @@ It will ask for the password (`Please provide the password for 'root@PRIVATE_IP'
 
 If there is no error on the console, everything is ready to proceed.
 
+![Create Schema Terminal](./images/create_schema_mysql_terminal.png)
+
 ## Enable HeatWave
 
 XXX

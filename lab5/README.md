@@ -33,6 +33,7 @@ Click **Create Project**.
 Set the name and description as follows:
 
 > Name: `Nature`
+> 
 > Description: `Fish Survey notebook`
 
 The next step is to create a Notebook, click **Create Notebook Session**.
@@ -40,9 +41,13 @@ The next step is to create a Notebook, click **Create Notebook Session**.
 Set the following values:
 
 > Name: `Fish Survey`
+> 
 > Compute Instance Shape: `VM.Standard.E2.2` but others will work as well.
+> 
 > Block Storage Size: `50`
+> 
 > VCN: `nature`
+> 
 > Subnet: `Private Subnet-nature`
 
 Click **Create**.
