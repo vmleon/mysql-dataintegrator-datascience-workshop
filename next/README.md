@@ -2,7 +2,7 @@
 
 ## Want to learn more?
 
-XXX
+[Getting Started with Data Integration](https://docs.oracle.com/en-us/iaas/data-integration/using/preparing-for-connectivity.htm)
 
 ## Troubleshooting
 

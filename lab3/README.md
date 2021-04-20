@@ -6,21 +6,13 @@ This lab walks you through the steps to get started using **Data Integrator** on
 
 Oracle Cloud Infrastructure Data Integration is a fully managed, serverless, native cloud service that helps you with common extract, load, and transform (ETL) tasks such as ingesting data from different sources, cleansing, transforming, and reshaping that data, and then efficiently loading it to target data sources on Oracle Cloud Infrastructure.
 
-| Role           | Responsibilities                                                                       |
-| -------------- | -------------------------------------------------------------------------------------- |
-| Administrators | Oversee, manage and monitor lifecycle management and security policies for the service |
-| Data Engineers | Develop, build and test data integration solutions                                     |
-| Operators      | Manage, monitor, and diagnose data integration executions                              |
-
 ## Create Your OCI Data Integrator instance
 
-[Getting Started with Data Integration](https://docs.oracle.com/en-us/iaas/data-integration/using/preparing-for-connectivity.htm)
+We need to create some policies to be able to create Data Integration.
 
-Requirements
+Go to **Identity** > **Policies**.
 
-VCN
-
-If not administrator:
+Data Integration Service should have network access to the sources and targe:
 
 ```
 allow group <group-name> to inspect compartments in tenancy
@@ -35,20 +27,6 @@ allow group <group-name> to use virtual-network-family in compartment <compartme
 allow group <group-name> to manage tag-namespaces in compartment <compartment-name>
 ```
 
-To use Object Storage
-```
-allow group <group_name> to use object-family in compartment <compartment-name>
-allow any-user to use buckets in compartment <compartment-name> where ALL {request.principal.type='disworkspace', request.principal.id='<workspace_ocid>'}
-allow any-user to manage objects in compartment <compartment-name> where ALL {request.principal.type='disworkspace',request.principal.id='<workspace_ocid>'}
-```
-
-To Use ADB
-```
-allow any-user {PAR_MANAGE} in compartment <compartment-name> where ALL {request.principal.type='disworkspace', request.principal.id='<workspace_ocid>'}
-```
-
-> Data Integration Service should have network access to the sources and targe
-
 Go to Menu > Data Integration.
 
 Click **Create Workspace**.
@@ -62,6 +40,19 @@ Modify the following fields, leave the rest as default:
 > Subnet: `Private subnet-nature`
 
 Click **Create**.
+
+Click the 3 dots contextual menu, then click **Copy OCID**.
+
+Go to Identity > Policies and edit the policies to contain the correct OCID.
+
+`ocid1.disworkspace.oc1.eu-frankfurt-1.vlkeqbfvoeqbvojwqrbvlckjwbedkjwbdskvjd`
+
+To use Object Storage
+```
+allow group <group_name> to use object-family in compartment <compartment-name>
+allow any-user to use buckets in compartment <compartment-name> where ALL {request.principal.type='disworkspace', request.principal.id='<workspace_ocid>'}
+allow any-user to manage objects in compartment <compartment-name> where ALL {request.principal.type='disworkspace',request.principal.id='<workspace_ocid>'}
+```
 
 You will see the new workspace in Creating status.
 
