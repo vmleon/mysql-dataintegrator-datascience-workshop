@@ -2,7 +2,7 @@
 
 ![Data Science](./images/ds_banner.jpg)
 
-**Oracle Data Science** XXX.
+**Oracle Data Science**: Build high-quality models faster and easier. Automated machine learning capabilities rapidly examine the data and recommend the optimal data features and best algorithms. Additionally, automated machine learning tunes the model and explains the model’s results.
 
 ## Create Policies
 
@@ -64,19 +64,19 @@ When the Notebook is active, click **Open**.
 
 Click **Terminal**.
 
+And type the following command:
+
 `pip install mysql-connector-python pandas seaborn`
 
 Wait for the installation to complete.
 
 ## Create Jupyter Notebook environment
 
-Click on **+** to open the Launcher again.
-
 Download the Notebook [here](files/FishSurvey.ipynb).
 
 Click **Upload files** and select `FishSurvey.ipynb` from your disk.
 
-Click on **FishSurvey.ipynb** on the left list of files.
+Double click on **FishSurvey.ipynb** on the left list of files.
 
 Make sure you modify `PRIVATE_IP` on the following code in the Notebook with the Private IP from your MySQL Database System.
 

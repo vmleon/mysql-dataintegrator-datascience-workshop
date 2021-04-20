@@ -14,4 +14,4 @@
 
 ---
 
-[**<< Go to Lab 4**](../lab4/README.md) | [Home](../README.md)
+[**<< Go to Lab 5**](../lab5/README.md) | [Home](../README.md)

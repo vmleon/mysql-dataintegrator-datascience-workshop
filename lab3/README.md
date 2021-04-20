@@ -226,6 +226,15 @@ Wait few seconds and the Status will change from `Not Started` to `Queued`, then
 
 On the bastion host, in `mysqhlsh` run a query to check the number of rows in `fish` table.
 
+Check to SQL mode:
+```
+\sql
+```
+
+```
+use nature;
+```
+
 ```sql
 select count(1) from fish;
 ```
