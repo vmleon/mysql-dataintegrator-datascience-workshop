@@ -2,7 +2,7 @@
 
 ![MySQL Database System](./images/mds_banner.png)
 
-**MySQL Database System** XXX.
+**MySQL Database System** is a fully-managed Oracle Cloud Infrastructure service, developed, managed, and supported by the MySQL team in Oracle..
 
 ## Create an instance of MySQL in the cloud
 

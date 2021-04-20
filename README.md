@@ -30,12 +30,17 @@ You don't want to spend a dime until you are happy with the workflow.
 [Lab 2: Create MySQL Database System](lab2/README.md)
 
 - Create an instance of MySQL in the cloud
-- XXX
+- Connect and create DB
+- Enable HeatWave
 
 [Lab 3: Create Data Integrator instance](lab3/README.md)
 
 - Create Your OCI Data Integrator instance
-- XXX
+- Create the Data Assets
+- Create the Data Flow
+- Create the Integration Task
+- Publish the Integration Task
+- Run the Task
 
 [Lab 4: Design and Run your ETL pipeline](lab4/README.md)
 
@@ -43,17 +48,16 @@ You don't want to spend a dime until you are happy with the workflow.
 
 [Lab 5: Transform your Data into Insights](lab5/README.md)
 
-- XXX
+- Create Policies
+- Create a Data Science Project
+- Install libraries
+- Create Jupyter Notebook environment
 
 [Next Steps](next/README.md)
 
 - Upgrade Instances to Paid
 - Want to Learn More?
 - Troubleshooting
-
-## Requirements
-
-XXX
 
 ---
 
