@@ -15,6 +15,7 @@ Make sure your root compartment (or the one you want) is selected.
 Name your MySQL instance
 
 > Name: `mysql-analytics`
+> 
 > Description (optional): `MySQL instance for Analytics`
 
 Between the three options, pick `HeatWave`. `Standalone` will work for the test but it doesn't include the Analytics Engine that will improve performance for Analytics.
@@ -22,19 +23,25 @@ Between the three options, pick `HeatWave`. `Standalone` will work for the test 
 For Username and password
 
 > Username: `root`
+> 
 > Password: `R2d2&C3po!`
+> 
 > ConfirmPassword: `R2d2&C3po!`
 
 Network configuration:
 
 > Virtual Cloud Network: `nature`
+> 
 > Subnet: `Private Subnet-nature (Regional)`
 
 Everything else is good by default:
 
 > Configure placement: `AD-1`
+> 
 > Configure hardware: `MySQL.HeatWave.VM.Standard.E3` or `MySQL.VM.Standard.E3.1.8GB` for Standalone (selected above)
+> 
 > Data Storage Size (GB): `50`
+> 
 > Configure Backups: `Enable Automatic Backups`
 
 Click **Create**.
