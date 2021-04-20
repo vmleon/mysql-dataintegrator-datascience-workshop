@@ -29,7 +29,9 @@ Go to your new `Private Subnet-nature` and click `Security List for Private Subn
 Click `Add Ingress Rules` and fill the form with the following information:
 
 > Source CIDR: `10.0.0.0/16`
+> 
 > Destination Port Range: `3306,33060`
+> 
 > Description: `MySQL and MySQL X Protocol`
 
 Leave the rest of fields with default values.
@@ -49,7 +51,9 @@ Change the name:
 Make sure the networking is like the following:
 
 > Virtual cloud network: `nature`
+>
 > Subnet: `Public Subnet-nature (Regional)`
+>
 > Public IP address: `Assign a public IPv4 address`
 
 On the section Add SSH Keys
@@ -63,8 +67,6 @@ The provisioning takes few minutes. You can copy the assigned Public IP that we 
 Make sure the Icon turn green and it says "RUNNING".
 
 Connect with SSH:
-
-XXX
 
 ```bash
 ssh -i ./path/to/private_key opc@<PUBLIC_IP>
@@ -89,8 +91,8 @@ Check it is running:
 If `active` then enable Docker as service 
 `sudo systemctl enable docker`
 
-> Optional:
-> 
+> Optional, if you don't want to use sudo with every `docker` command:
+>
 > `sudo usermod -aG docker $USER`
 
 Let's pull and run Mysql Shell as a docker container:
