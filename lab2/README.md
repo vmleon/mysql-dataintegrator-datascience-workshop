@@ -6,11 +6,15 @@
 
 ## Create an instance of MySQL in the cloud
 
-Go to Menu > MySQL > DB Systems.
+Go to **Menu** > **MySQL** > **DB Systems**.
+
+![](./images/mysql_menu.png)
 
 Click **Create MySQL DB System**.
 
 Make sure your root compartment (or the one you want) is selected.
+
+![](./images/mysql_create_button.png)
 
 Name your MySQL instance
 
@@ -28,11 +32,15 @@ For Username and password
 > 
 > ConfirmPassword: `R2d2&C3po!`
 
+![](./images/mysql_create_db_fields.png)
+
 Network configuration:
 
 > Virtual Cloud Network: `nature`
 > 
 > Subnet: `Private Subnet-nature (Regional)`
+
+![](./images/mysql_vcn_fields.png)
 
 Everything else is good by default:
 
@@ -46,25 +54,51 @@ Everything else is good by default:
 
 Click **Create**.
 
+![](./images/mysql_shape_fields.png)
+
 The provisioning is around 10 minutes. The icon should change to `ACTIVE` in green:
 
 ![Provisioning](./images/mds-provisioning.png)
 
 ![Active](./images/mds-active.png)
 
-Copy the private IP address from the MySQL DB System Information page.
+Copy the private IP address from the MySQL DB System Information page, it will look like `10.0.1.xxx`.
+
+![](images/mysql_private_ip.png)
 
 ## Connect and create DB
 
+Connect with Cloud Shell (if not still active).
+
+![](./images/cloud_shell.png)
+
+XXX
+
+![](./images/cloud_shell_upload_sql.png)
+
+XXX
+
+![](./images/cloud_shell_upload.png)
+
+XXX
+
+![](./images/cloud_shell_upload_select_file.png)
+
+XXX
+
+![](./images/cloud_shell_upload_completed.png)
+
 From your bastion host with MySQL Shell we are going to prepare your MySQL Database for the data.
+
+Download the file [SQL Fish Survey](./files/create_fish_survey.sql).
+
+Copy the file into the bastion host with (replace `PUBLIC_IP` with your bastion host IP):
+
+`scp create_fish_survey.sql opc@PUBLIC_IP:/home/opc/`
 
 SSH into the bastion host and type:
 
-Download the file [Create Fish Survey](./files/create_fish_survey.sql).
-
-Copy the file into the bastion host with:
-
-`scp -i ./path/to/private_key create_fish_survey.sql opc@<PUBLIC_IP>:home/opc/`
+`ssh opc@PUBLIC_IP`
 
 Run a docker image with MySQL Shell:
 
