@@ -70,6 +70,8 @@ Run a docker image with MySQL Shell:
 
 `sudo docker run -it --rm --name mysql -v $(pwd):/tmp mysql/mysql-server bash`
 
+When in the docker container, type `mysqlsh`
+
 Run the script with:
 
 ```
