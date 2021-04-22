@@ -68,51 +68,51 @@ Copy the private IP address from the MySQL DB System Information page, it will l
 
 ## Connect and create DB
 
-Connect with Cloud Shell (if not still active).
+Download the file [SQL Fish Survey](./files/create_fish_survey.sql) where we have the SQL code to create the schema and table to hold the data.
+
+Let's upload the file to cloud Shell, and then to our Bastion host. From the bastion host we can run MySQL Shell to run the SQL file.
+
+Connect with Cloud Shell (if you close it or is no longer active).
 
 ![](./images/cloud_shell.png)
 
-XXX
+Click **Cloud Shell menu** and then **Upload**.
 
 ![](./images/cloud_shell_upload_sql.png)
 
-XXX
-
-![](./images/cloud_shell_upload.png)
-
-XXX
+**Select** the file `create_fish_survey.sql` and click Upload.
 
 ![](./images/cloud_shell_upload_select_file.png)
 
-XXX
+**Hide** the popup window when completed.
 
 ![](./images/cloud_shell_upload_completed.png)
 
-From your bastion host with MySQL Shell we are going to prepare your MySQL Database for the data.
+Now, on the Cloud Shell terminal, we are going to copy the file into the bastion host with (replace `PUBLIC_IP` with your bastion host IP):
 
-Download the file [SQL Fish Survey](./files/create_fish_survey.sql).
-
-Copy the file into the bastion host with (replace `PUBLIC_IP` with your bastion host IP):
-
-`scp create_fish_survey.sql opc@PUBLIC_IP:/home/opc/`
+```
+scp create_fish_survey.sql opc@PUBLIC_IP:/home/opc/
+```
 
 SSH into the bastion host and type:
 
-`ssh opc@PUBLIC_IP`
+```
+ssh opc@PUBLIC_IP
+```
 
 Run a docker image with MySQL Shell:
 
-`sudo docker run -it --rm --name mysql -v $(pwd):/tmp mysql/mysql-server bash`
+```
+sudo docker run -it --rm --name mysql -v $(pwd):/tmp mysql/mysql-server bash
+```
 
-When in the docker container, type `mysqlsh`
-
-Run the script with:
+When in the docker container, run the command with:
 
 ```
 cat /tmp/create_fish_survey.sql | mysqlsh --sql root@<PRIVATE_IP>
 ```
 
-It will ask for the password (`Please provide the password for 'root@PRIVATE_IP':`). Type the MySQL DB password.
+It will ask for the password (`Please provide the password for 'root@PRIVATE_IP':`). Type the MySQL DB password `R2d2&C3po!`.
 
 If there is no error on the console, everything is ready to proceed.
 
