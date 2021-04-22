@@ -134,13 +134,19 @@ It will provision this small virtual machine and you will have access to its ter
 
 ![Cloud Shell terminal](images/cloud_shell_select_file_hide.png)
 
+Create `.ssh` folder for your SSH keys.
+
 ```
 mkdir .ssh
 ```
 
+Move the key file to your `.ssh` folder with a different name `id_rsa`, which is a default name.
+
 ```
 mv ssh-key-*.key .ssh/id_rsa
 ```
+
+Connect with your bastion host with SSH.
 
 ```
 ssh opc@PUBLIC_UP
@@ -149,6 +155,7 @@ ssh opc@PUBLIC_UP
 To the question `Are you sure you want to continue connecting (yes/no/[fingerprint])?` type `yes` and ENTER.
 
 You will get `bad permissions` warning. Basically the permissions of the key are too open. Security first.
+
 ```
 Warning: Permanently added 'xxx.xxx.xxx.xxx' (ECDSA) to the list of known hosts.
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -161,16 +168,16 @@ Load key "/home/it/.ssh/id_rsa": bad permissions
 Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
 ```
 
-Let's fix the permissions to `700` with the following command:
+Let's fix the permissions to `600` with the following command:
 
 ```
-chmod 700 .ssh/id_rsa
+chmod 600 .ssh/id_rsa
 ```
 
-Connect with SSH again:
+Connect with SSH again (remember to replace `PUBLIC_IP` with your bastion host IP):
 
 ```
-ssh opc@PUBLIC_UP
+ssh opc@PUBLIC_IP
 ```
 
 This time you should be inside of the bastion host. This is the machine we will use to access MySQL Database System that lives in a private subnet, for security.
@@ -183,26 +190,37 @@ sudo yum update -y && sudo yum install docker-engine -y
 
 Start Docker Engine:
 
-`sudo systemctl start docker`
+```
+sudo systemctl start docker
+```
 
 Check it is running:
 
-`sudo systemctl status docker`
+```
+sudo systemctl status docker
+```
 
 ![Docker Service Active](./images/docker_service_active.png)
 
-If `active` then enable Docker as service 
-`sudo systemctl enable docker`
+If `active` then enable Docker as service.
+
+```
+sudo systemctl enable docker
+```
 
 > Optional, if you don't want to use `sudo` with every `docker` command:
 >
-> `sudo usermod -aG docker $USER`
+> ```
+> sudo usermod -aG docker $USER
+> ```
 > 
-> For the changes to take place you need to `exit` and then `ssh` into the bastion host
+> For the changes to take place you need to `exit` and then `ssh` into the bastion host again
 
-Let's pull and run Mysql Shell as a docker container:
+Let's pull Mysql as a docker container:
 
-`sudo docker pull mysql/mysql-server`
+```
+sudo docker pull mysql/mysql-server
+```
 
 You can close Cloud shell for now.
 
