@@ -8,21 +8,31 @@
 
 Create Dynamic Group
 
+`datascience`
+
+`Data Science Dynamic Group`
+
 `ALL { resource.type = 'datasciencenotebooksession' }`
 
 Create Policies
 
 In the root compartment
 
+`datascience`
+
+`Data Science to use network resources`
+
 `allow service datascience to use virtual-network-family in tenancy`
 
-`allow dynamic-group <dynamic-group> to manage data-science-family in tenancy where <dynamic-group> represents the name of your dynamic group`
+`allow dynamic-group datascience to manage data-science-family in tenancy`
 
-Non-Administrators
-
-`allow group <data-scientists> to use virtual-network-family in tenancy`
-
-`allow group <data-scientists> to manage data-science-family in tenancy where <data-scientists> represents the name of your user group`
+> 
+> Non-Administrators
+> 
+> `allow group <data-scientists> to use virtual-network-family in tenancy`
+> 
+> `allow group <data-scientists> to manage data-science-family in tenancy`
+>
 
 ## Create a Data Science Project
 

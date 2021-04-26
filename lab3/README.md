@@ -1,35 +1,55 @@
 # Lab 3: Create Data Integrator instance
 
-![Data Integrator](./images/ocidi_banner.jpeg)
+![Data Integrator](./images/ocidi_banner.png)
 
 This lab walks you through the steps to get started using **Data Integrator** on Oracle Cloud Infrastructure (OCI). You will provision a new instance in just few minutes.
 
-Oracle Cloud Infrastructure Data Integration is a fully managed, serverless, native cloud service that helps you with common extract, load, and transform (ETL) tasks such as ingesting data from different sources, cleansing, transforming, and reshaping that data, and then efficiently loading it to target data sources on Oracle Cloud Infrastructure.
+OCI Data Integration is a fully managed, serverless, native cloud service that helps you with common extract, load, and transform (ETL) tasks such as ingesting data from different sources, cleansing, transforming, and reshaping that data, and then efficiently loading it to target data sources on OCI.
 
 ## Create Your OCI Data Integrator instance
 
-We need to create some policies to be able to create Data Integration.
+We need to create some policies to allow Data Integrator service to use other services within OCI.
 
 Go to **Identity** > **Policies**.
 
-Data Integration Service should have network access to the sources and targe:
+![Identity Policy Menu](./images/identity_policies_menu.png)
 
-```
-allow group <group-name> to inspect compartments in tenancy
-allow service dataintegration to use virtual-network-family in compartment <your_compartment>
-```
+Click **Create Policy**.
 
-Non-admin users
-```
-allow group <group-name> to manage dis-workspaces in compartment <compartment-name>
-allow group <group-name> to manage dis-work-requests in compartment <compartment-name>
-allow group <group-name> to use virtual-network-family in compartment <compartment-name>
-allow group <group-name> to manage tag-namespaces in compartment <compartment-name>
-```
+![Create Policy](./images/identity_create_policy.png)
 
-Go to Menu > Data Integration.
+
+Create a new policy
+
+> Name: `dataintegration`
+> 
+> Description: `Allow Data Integration Service to use VCN`
+>
+> Toogle: `Show manual editor`
+> 
+> Policy Builder: `allow service dataintegration to use virtual-network-family in tenancy`
+
+![Policy fields for DI](./images/identity_policy_fields.png)
+
+
+> If you have created an Oracle Cloud Account to do the workshop, you are already the Administrator. You DO NOT NEED TO DO THIS STEP.
+> 
+> In case you are a Non-admin user, you will need to set up some more policies to allow the group you belong to. Ask your administrator.
+> 
+> ```
+> allow group <group-name> to manage dis-workspaces in compartment <compartment-name>
+> allow group <group-name> to manage dis-work-requests in compartment <compartment-name>
+> allow group <group-name> to use virtual-network-family in compartment <compartment-name>
+> allow group <group-name> to manage tag-namespaces in compartment <compartment-name>
+> ```
+
+Go to **Menu** > **Data Integration**.
+
+![](./images/di_menu.png)
 
 Click **Create Workspace**.
+
+![](./images/di_create_workshop_button.png)
 
 Modify the following fields, leave the rest as default:
 
@@ -41,34 +61,57 @@ Modify the following fields, leave the rest as default:
 
 Click **Create**.
 
-Click the 3 dots contextual menu, then click **Copy OCID**.
+![](./images/di_create_workshop.png)
 
-Go to Identity > Policies and edit the policies to contain the correct OCID.
+While the Workspace is created, click the 3 dots contextual menu.
 
-`ocid1.disworkspace.oc1.eu-frankfurt-1.vlkeqbfvoeqbvojwqrbvlckjwbedkjwbdskvjd`
+![](./images/di_creating.png)
 
-To use Object Storage
+Then click **Copy OCID**.
+
+![](./images/di_ocid.png)
+
+Go to **Identity** > **Policies**. We are going to add new policies for our new workspace.
+
+![](./images/di_workspace_policies_menu.png)
+
+Click on `dataintegration` policy name.
+
+![](./images/di_policy_link.png)
+
+Click **Edit Policy Statements**.
+
+![](./images/di_policy_edit_button.png)
+
+Click **+ Another Statement**.
+
+![](./images/di_policy_add_policy.png)
+
+Add 2 more statements and make sure you set the workspace OCID. It will look like this one: 
+
+The first statement:
+
 ```
-allow group <group_name> to use object-family in compartment <compartment-name>
-allow any-user to use buckets in compartment <compartment-name> where ALL {request.principal.type='disworkspace', request.principal.id='<workspace_ocid>'}
-allow any-user to manage objects in compartment <compartment-name> where ALL {request.principal.type='disworkspace',request.principal.id='<workspace_ocid>'}
+allow any-user to use buckets in tenancy where ALL {request.principal.type='disworkspace', request.principal.id='ocid1.disworkspace.oc1.XX-XXXXXXX-1.XXXXXXXXXXXXXXXXXXX'}
 ```
 
-You will see the new workspace in Creating status.
+The second statement:
 
-![Creating DI Workspace](images/ocidi_workspace_creating.png)
+```
+allow any-user to manage objects in tenancy where ALL {request.principal.type='disworkspace',request.principal.id='ocid1.disworkspace.oc1.XX-XXXXXXX-1.XXXXXXXXXXXXXXXXXXX'}
+```
 
-Wait for provisioning. (~9min)
+Click **Save Changes**.
 
-You will see a success creation.
+![](./images/di_policy_save_changes.png)
 
-![Success DI creation](images/ocidi_workspace_success.png)
+Come back to Data Integration, Click **Menu** > **Data Integration**.
 
-Click on the new `Workspace Nature`.
+![](./images/di_back_to_data_integration.png)
 
-You can see that by default there is a `Default Application` and a project `My First Project`.
+Check the Data Integration Workspace is `Active` and click the link.
 
-The first task is to create the data assets that represent the source and target for the data integration. In our case, the data source is an Object Storage bucket and the target is our MySQL database.
+![](images/di_active_go_to_workspace.png)
 
 ## Create the Data Assets
 
@@ -76,23 +119,53 @@ We are going to need the Object Storage URL and Tenancy ID.
 
 ### Get Object Storage URL
 
-Go to Object Storage > `bucket-study`.
+Go to Object Storage.
 
-On your `reef_life_survey_fish.csv` click on the 3 dots contextual menu and click on **View Object Details**.
+![](./images/os_menu.png)
 
-Copy the first part of the URL, like here `https://objectstorage.eu-frankfurt-1.oraclecloud.com`.
+Click on `bucket-study`.
+
+![](images/os_bucket.png)
+
+On your `reef_life_survey_fish.csv` click on the 3 dots contextual menu.
+
+![](images/os_object_menu.png)
+
+Click on **View Object Details**.
+
+![](images/os_view_object_details.png)
+
+Copy the first part of the URL domain, something like here `https://objectstorage.uk-london-1.oraclecloud.com`.
+
+![](images/os_url.png)
 
 ### Get Tenancy OCID
 
-Go to Profile > Tenancy.
+Go to Profile on the top-right corner.
 
-Copy the OCID. Write it down for the next step.
+Click on Tenancy.
+
+![](images/profile_tenancy_menu.png)
+
+Tenancy details contains a lot of interesting information. Your Home Region, your **CSI number** for creating support tickets. Also your **Object Storate Namespace**. 
+
+At this point we are interested in the Tenancy OCID. Copy the OCID by clicking on **Copy**. Write it down for the next step.
+
+![](images/tenancy.png)
 
 > You can see that the Object Storage Namespace is here too, in case you need it in the future.
 
 Let's create the Data Asset now.
 
+You can see that by default there is a `Default Application` and a project `My First Project`.
+
+![](./images/di_home_page.png)
+
+The first task is to create the data assets that represent the source and target for the data integration. In our case, the data source is an Object Storage bucket and the target is our MySQL database.
+
 Click **Create Data Asset**.
+
+![](./images/di_home_create_asset_bucket.png)
 
 Fill the fields as follows:
 
@@ -108,11 +181,25 @@ Fill the fields as follows:
 >
 > Click outside the Tenancy OCID field and after few seconds an OS Namespace will be retrieved automatically.
 
+![](images/dataasset_fields1.png)
+
 You can test the connection.
 
-Click **Create**.
+![](images/dataasset_test_connection.png)
 
-Go back to Home and Click **Create Data Assets** again. This time we are going to create the MySQL database asset with the following values:
+After you get a successful test, click **Create**.
+
+![](images/dataasset_test_connection_success.png)
+
+Go back to Home.
+
+![](images/dataasset_os_back_home.png)
+
+Click **Create Data Assets** again.
+
+![](images/dataasset_create_button.png)
+
+This time we are going to create the MySQL database asset with the following values:
 
 > Name: `mysql-database`
 > 
@@ -130,13 +217,25 @@ Go back to Home and Click **Create Data Assets** again. This time we are going t
 > 
 > Password: `R2d2&C3po!`
 
+![](images/dataasset_mysql_fields1.png)
+
+![](images/dataasset_mysql_fields2.png)
+
 You can test the connection.
 
 Click **Create**.
 
+![](images/dataasset_mysql_test_create.png)
+
+When the data asset is created, go back to Home.
+
+![](images/dataasset_mysql_success_go_back_home.png)
+
 ## Create the Data Flow
 
-Go back to Home and Click **Create Data Flow**.
+Click **Create Data Flow**.
+
+![](images/dataflow_create_button.png)
 
 Set the Name, Project and Description in the New Data Flow Panel
 
@@ -146,7 +245,17 @@ Set the Name, Project and Description in the New Data Flow Panel
 > 
 > Description: `Data Flow from CSV on Object Storage to MySQL Database`
 
-Drag and Drop the Source icon into the canvas.
+To select the Project, click on `My First Project` and click **Select**.
+
+![](images/dataflow_select_project.png)
+
+It should look like this:
+
+![](images/dataflow_properties.png)
+
+From the Operators panel, drag and drop the Source icon into the canvas.
+
+![](images/dataflow_source_dnd.png)
 
 Set the Identifier and the rest of the info in the Source:
 
@@ -159,6 +268,24 @@ Set the Identifier and the rest of the info in the Source:
 > Schema: `bucket-study`
 > 
 > Data entity: click **Browse By Name** and select `reef_life_survey_fish.csv`, all the default values are good, click **Select**.
+
+![](images/dataflow_source_id.png)
+
+![](images/dataflow_source_data_asset_bucket.png)
+
+![](images/dataflow_source_data_entity.png)
+
+![](images/dataflow_source_data_entity_browse.png)
+
+![](images/dataflow_source_data_entity_file.png)
+
+![](images/dataflow_source_data_entity_file_select.png)
+
+![](images/dataflow_source_data_entity_file_type.png)
+
+![](images/dataflow_source_data_entity_file_type_csv.png)
+
+![](images/dataflow_source_data_entity_attributes.png)
 
 Confirm you can see attributes and Data.
 
@@ -175,6 +302,7 @@ Set the Identifier and the rest of the info in the Target:
 > Schema: `nature`
 > 
 > Data entity: `fish`
+
 
 Confirm you can see attributes and data.
 
