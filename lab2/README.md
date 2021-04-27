@@ -18,39 +18,89 @@ Make sure your root compartment (or the one you want) is selected.
 
 Name your MySQL instance
 
-> Name: `mysql-analytics`
-> 
-> Description (optional): `MySQL instance for Analytics`
+Name: 
+
+```
+mysql-analytics
+```
+
+Description (optional): 
+
+```
+MySQL instance for Analytics
+```
 
 Between the three options, pick `HeatWave`. `Standalone` will work for the test, but it doesn't include the Analytics Engine that will improve performance for Analytics.
 
 For Username and password
 
-> Username: `root`
-> 
-> Password: `R2d2&C3po!`
-> 
-> Confirm Password: `R2d2&C3po!`
+Username: 
+
+```
+root
+```
+
+Password: 
+
+```
+R2d2&C3po!
+```
+
+Confirm Password: 
+
+```
+R2d2&C3po!
+```
 
 ![](./images/mysql_create_db_fields.png)
 
 Network configuration:
 
-> Virtual Cloud Network: `nature`
-> 
-> Subnet: `Private Subnet-nature (Regional)`
+Virtual Cloud Network: 
+
+```
+nature
+```
+
+Subnet: 
+
+```
+Private Subnet-nature (Regional)
+```
 
 ![](./images/mysql_vcn_fields.png)
 
 Everything else is good by default:
 
-> Configure placement: `AD-1`
-> 
-> Configure hardware: `MySQL.HeatWave.VM.Standard.E3` or `MySQL.VM.Standard.E3.1.8GB` for Standalone (selected above)
-> 
-> Data Storage Size (GB): `50`
-> 
-> Configure Backups: `Enable Automatic Backups`
+Configure placement: 
+
+```
+AD-1
+```
+
+Configure hardware: 
+
+```
+MySQL.HeatWave.VM.Standard.E3
+```
+
+or Standalone (selected above)
+
+```
+MySQL.VM.Standard.E3.1.8GB
+```
+
+Data Storage Size (GB): 
+
+```
+50
+```
+
+Configure Backups: 
+
+```
+Enable Automatic Backups
+```
 
 Click **Create**.
 
@@ -68,9 +118,9 @@ Copy the private IP address from the MySQL DB System Information page; it will l
 
 ## Connect and create DB
 
-Download the file [SQL Fish Survey](./files/create_fish_survey.sql), where we have the SQL code to create the schema and table to hold the data.
+Download the file [SQL Fish Survey](https://raw.githubusercontent.com/vmleon/mysql-dataintegrator-datascience-workshop/main/lab2/files/create_fish_survey.sql), where we have the SQL code to create the schema and table to hold the data.
 
-Let's upload the file to Cloud Shell and then to our Bastion host. From the bastion host, we can run MySQL Shell to run the SQL file.
+Let's upload the file to Cloud Shell and then to our Bastion host with `scp`. From the bastion host, we can run MySQL Shell to run the SQL file. Just follow the steps.
 
 Connect with Cloud Shell (if you close it or it is no longer active).
 
@@ -94,7 +144,7 @@ Now, on the Cloud Shell terminal, we are going to copy the file into the bastion
 scp create_fish_survey.sql opc@PUBLIC_IP:/home/opc/
 ```
 
-SSH into the bastion host and type:
+SSH into the bastion host:
 
 ```
 ssh opc@PUBLIC_IP
@@ -106,13 +156,17 @@ Run a docker image with MySQL Shell:
 sudo docker run -it --rm --name mysql -v $(pwd):/tmp mysql/mysql-server bash
 ```
 
-When in the docker container, run the command with:
+When in the docker container, replace `PRIVATE_IP` with the correct MySQL Private IP and run the command:
 
 ```
-cat /tmp/create_fish_survey.sql | mysqlsh --sql root@<PRIVATE_IP>
+cat /tmp/create_fish_survey.sql | mysqlsh --sql root@PRIVATE_IP
 ```
 
-It will ask for the password (`Please provide the password for 'root@PRIVATE_IP':`). Type the MySQL DB password `R2d2&C3po!`.
+It will ask for the password (`Please provide the password for 'root@PRIVATE_IP':`). Type the MySQL DB password:
+
+```
+R2d2&C3po!
+```
 
 If there is no error on the console, everything is ready to proceed.
 
