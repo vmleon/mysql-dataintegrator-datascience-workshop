@@ -4,7 +4,7 @@
 
 ## Conversational Approach to Your Applications
 
-This workshop walks you through the steps to use **MySQL Database System**, **Data Integrator** and **Data Science** to extract a dataset, apply some transformations, load the data into MySQL and run analytics with Jupyter Notebook.
+This workshop walks you through the steps to use **MySQL Database System**, **Data Integration** and **Data Science** to extract from a CSV dataset, apply some transformations, load the data into MySQL (with HeatWave Analytics Engine) and run a data science Jupyter Notebook.
 
 ## Who Should Do This Workshop
 
@@ -33,9 +33,9 @@ You want to explore **Oracle Cloud and its Free Tier**.
 - Connect and create DB
 - Enable HeatWave
 
-[Lab 3: Create Data Integrator instance](lab3/README.md)
+[Lab 3: Create Data Integration Instance](lab3/README.md)
 
-- Create Your OCI Data Integrator instance
+- Create Your OCI Data Integration Instance
 - Create the Data Assets
 
 [Lab 4: Design and Run your ETL pipeline](lab4/README.md)
@@ -54,7 +54,6 @@ You want to explore **Oracle Cloud and its Free Tier**.
 
 [Next Steps](next/README.md)
 
-- Upgrade Instances to Paid
 - Want to Learn More?
 - Troubleshooting
 

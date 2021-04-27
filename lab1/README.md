@@ -4,9 +4,11 @@
 
 ## Create Virtual Cloud Network (VCN)
 
-We are going to create a network with a public subnet (with access from the Internet) and a private subnet (no direct access from the Internet). This layout is interesting to protect those services that don't want to be exposed to the Internet from other services or machines that you want to be reachable.
+We are going to create a network with a public subnet (with access from the Internet) and a private subnet (no direct access from the Internet).
 
-Go to **Menu** > **Networking** > **Virtual Cloud Networks**:
+This network layout is interesting to protect those services that don't need to be exposed to the Internet (living in the Private subnet) meanwhile other services and virtual machines with direct access from the internet, like Bastion hosts or Web Servers (living in the Public Subnet).
+
+Go to **Menu** > **Networking** > **Virtual Cloud Networks**.
 
 ![VCN menu](./images/vcn_menu.png)
 
@@ -26,7 +28,10 @@ Click **Start VCN Wizard**.
 
 Change the VCN name and leave everything else as default.
 
-> VCN Name: `nature`
+VCN Name: 
+```
+nature
+```
 
 Click **Next**.
 
@@ -42,29 +47,41 @@ Click **View Virtual Cloud Network**.
 
 ![VCN Creation OK](./images/vcn_create_ok.png)
 
-Go to your new **Private Subnet-nature** and click **Security List for Private Subnet-nature**.
+Go to your new **Private Subnet-nature**.
 
 ![VCN Private Subnet](./images/vcn_private_subnet.png)
 
-We need to open the ports for MySQL and MySQL X protocols: `3306` and `33060`.
+Click **Security List for Private Subnet-nature**.
+
 
 ![VCN Security List](./images/vcn_security_list.png)
 
-We are adding an ingress rule on those ports from the internal VCN CIDR `10.0.0.0/16`.
-
-![VCN Add Ingress Rule](images/vcn_add_ingress_rules.png)
+We need to open the ports for MySQL and MySQL X protocols: `3306` and `33060`.
 
 Click **Add Ingress Rules**` and fill the form with the following information:
 
-> Source CIDR: `10.0.0.0/16`
-> 
-> Destination Port Range: `3306,33060`
-> 
-> Description: `MySQL and MySQL X Protocol`
+![VCN Add Ingress Rule](images/vcn_add_ingress_rules.png)
+
+We are adding an ingress rule on those ports from the internal VCN CIDR `10.0.0.0/16`.
+
+Source CIDR: 
+```
+10.0.0.0/16
+```
+
+Destination Port Range: 
+```
+3306,33060
+```
+
+Description: 
+```
+MySQL and MySQL X Protocol
+```
 
 Leave the rest of the fields with default values.
 
-Click **Add Ingress Rule** to confirm the values.
+And click **Add Ingress Rule** to confirm the values.
 
 ![VCN Ingress Rule MySQL](images/vcn_ingress_rule_mysql.png)
 
@@ -72,9 +89,11 @@ You can confirm the rules are added.
 
 ![VCN Security List Rules for MySQL](./images/vcn_security_list_for_mysql.png)
 
+---
+
 ## Create Bastion Host
 
-We are going to create a compute in the Public Subnet with a public IP; it will be our access point to public and private resources.
+We are going to create a compute instance in the Public Subnet with a public IP; it will be our access point to public and private resources.
 
 Go to **Menu** > **Compute** > **Instances**.
 
@@ -84,21 +103,43 @@ Click **Create Instance**.
 
 ![Create Intance Button](./images/compute_create_instance_button.png)
 
-Change the name:
+Change the name to:
 
-> Name: `bastion`
+```
+bastion
+```
 
-Make sure the networking is like the following:
+Make sure the rest of the properties are like the following:
 
-> Image: `Oracle Linux 7.9`
->
-> Shape: `VM.Standard.E2.1.Micro` for Always free or `VM.Standard.E3.Flex`
->
-> Virtual cloud network: `nature`
->
-> Subnet: `Public Subnet-nature`
->
-> Assign a public IPv4 address: `Yes`
+Image: 
+```
+Oracle Linux 7.9
+```
+
+Shape for Always Free: 
+```
+VM.Standard.E2.1.Micro
+```
+
+Alternative Shape cloud be:
+```
+VM.Standard.E3.Flex
+```
+
+Virtual cloud network: 
+```
+nature
+```
+
+Subnet: 
+```
+Public Subnet-nature
+```
+
+Assign a public IPv4 address: 
+```
+Yes
+```
 
 ![Instance Values](./images/compute_create_values.png)
 
@@ -118,11 +159,14 @@ The provisioning takes few minutes.
 
 You can copy the assigned Public IP that we will use to SSH into the instance, also notice that the username is `opc`.
 
-![Compute Provisioning](./images/compute_public_ip.png)
-
 Make sure the Icon turns green, and it says "RUNNING".
 
-To avoid install tools on your local computer, we are going to use Cloud Shell. Cloud Shell is a small and free Linux virtual machine with a lot of DevOps tools preinstalled. Click on the Cloud Shell icon on the top-right menu bar.
+![Compute Provisioning](./images/compute_public_ip.png)
+
+
+To avoid install tools on your local computer, we are going to use Cloud Shell. Cloud Shell is a small and free Linux virtual machine with a lot of DevOps tools preinstalled that Oracle Cloud offers.
+
+Click on the **Cloud Shell** icon on the top-right menu bar.
 
 ![Cloud Shell](images/compute_cloud_shell.png)
 
@@ -130,11 +174,19 @@ It will provision this small virtual machine, and you will have access to its te
 
 ![Cloud Shell terminal](images/cloud_shell.png)
 
+Click on the Cloud Shell **menu** icon and then in **Upload**.
+
+![Cloud Shell terminal](images/cloud_shell_upload.png)
+
+Click on **select from your computer**. And select the private key you downloaded for the compute instance.
+
 ![Cloud Shell terminal](images/cloud_shell_select_file.png)
+
+After you Upload the file you can **Hide** the message.
 
 ![Cloud Shell terminal](images/cloud_shell_select_file_hide.png)
 
-Create `.ssh` folder for your SSH keys.
+On Cloud Shell terminal, create `.ssh` folder for your SSH keys.
 
 ```
 mkdir .ssh
@@ -146,15 +198,15 @@ Move the key file to your `.ssh` folder with a different name, `id_rsa`, which i
 mv ssh-key-*.key .ssh/id_rsa
 ```
 
-Connect with your bastion host with SSH.
+Connect with your bastion host with SSH. Yhe `PUBLIC_IP` was copied when the bastion host was created.
 
 ```
-ssh opc@PUBLIC_UP
+ssh opc@PUBLIC_IP
 ```
 
 To the question `Are you sure you want to continue connecting (yes/no/[fingerprint])?` type `yes` and ENTER.
 
-You will get `bad permissions` warning. Basically the permissions of the key are too open. Security first.
+You will most likely get a `bad permissions` warning. Basically the permissions of the key are too open.
 
 ```
 Warning: Permanently added 'xxx.xxx.xxx.xxx' (ECDSA) to the list of known hosts.
@@ -168,7 +220,7 @@ Load key "/home/it/.ssh/id_rsa": bad permissions
 Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
 ```
 
-Let's fix the permissions to `600` with the following command:
+Security first, let's fix the permissions to `600` with the following command:
 
 ```
 chmod 600 .ssh/id_rsa
@@ -180,7 +232,7 @@ Connect with SSH again (remember to replace `PUBLIC_IP` with your bastion host I
 ssh opc@PUBLIC_IP
 ```
 
-This time you should be inside of the bastion host. This is the machine we will use to access MySQL Database System that lives in a private subnet for security.
+This time you should be inside of the bastion host. This is the machine we will use to access MySQL Database System that lives in a private subnet.
 
 Install Docker:
 
@@ -208,7 +260,7 @@ If `active`, then enable Docker as a service.
 sudo systemctl enable docker
 ```
 
-> Optional, if you don't want to use `sudo` with every `docker` command:
+ Optional, if you don't want to use `sudo` with every `docker` command:
 >
 > ```
 > sudo usermod -aG docker $USER
@@ -216,13 +268,15 @@ sudo systemctl enable docker
 > 
 > For the changes to take place, you need to `exit` and then `ssh` into the bastion host again
 
-Let's pull Mysql as a docker container:
+Let's pull MySQL as a docker container:
 
 ```
 sudo docker pull mysql/mysql-server
 ```
 
-You can close Cloud shell for now.
+You can close Cloud Shell for now.
+
+---
 
 ## Create Object Storage and upload files
 
@@ -234,9 +288,15 @@ Click **Create Bucket**.
 
 ![Create Bucket](./images/os_create_bucket.png)
 
-Change the bucket name, leave everything else by default. And click **Create**.
+Change the bucket name, leave everything else by default.
 
-> Bucket Name: `bucket-study`
+Bucket Name: 
+
+```
+bucket-study
+```
+
+Click **Create**.
 
 ![Bucket Name](./images/os_bucket_name.png)
 
@@ -248,7 +308,7 @@ On the section **Objects**, click **Upload**.
 
 ![Create Bucket](./images/os_object_upload.png)
 
-Download the dataset [Reef Life Survey Fish](./files/reef_life_survey_fish.csv)
+Download the dataset [Reef Life Survey Fish](./files/reef_life_survey_fish.csv).
 
 Drop the file on **Choose Files from your Computer**. Leave everything else by default.
 

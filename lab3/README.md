@@ -1,14 +1,14 @@
-# Lab 3: Create Data Integrator instance
+# Lab 3: Create Data Integration Instance
 
-![Data Integrator](./images/ocidi_banner.png)
+![Data Integration](./images/ocidi_banner.png)
 
-This Lab walks you through the steps to get started using **Data Integrator** on Oracle Cloud Infrastructure (OCI). You will provision a new instance in just a few minutes.
+This Lab walks you through the steps to get started using **Data Integration** on Oracle Cloud Infrastructure (OCI). You will provision a new instance in just a few minutes.
 
 OCI Data Integration is a fully managed, serverless, native cloud service that helps you with common extract, load, and transform (ETL) tasks such as ingesting data from different sources, cleansing, transforming, and reshaping that data, and then efficiently loading it to target data sources on OCI.
 
-## Create Your OCI Data Integrator instance
+## Create Your OCI Data Integration Instance
 
-We need to create some policies to allow the Data Integrator service to use other services within OCI.
+We need to create some policies to allow the Data Integration service to use other services within OCI.
 
 Go to **Identity** > **Policies**.
 
