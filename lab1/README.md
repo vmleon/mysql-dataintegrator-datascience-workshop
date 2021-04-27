@@ -4,13 +4,13 @@
 
 ## Create Virtual Cloud Network (VCN)
 
-We are going to create a network with a public subnet (with access from Internet) and a private subnet (no direct access from Internet). This layout is interesting to protect those services that don't want to be exposed to Internet from other services or machines that you want to be reachable.
+We are going to create a network with a public subnet (with access from the Internet) and a private subnet (no direct access from the Internet). This layout is interesting to protect those services that don't want to be exposed to the Internet from other services or machines that you want to be reachable.
 
 Go to **Menu** > **Networking** > **Virtual Cloud Networks**:
 
 ![VCN menu](./images/vcn_menu.png)
 
-> If you have not pick a compartment, pick **root** compartment for this lab.
+> If you have not picked a compartment, pick the **root** compartment for this Lab.
 > 
 > ![Pick Compartment](./images/pick_compartment.png)
 
@@ -50,7 +50,7 @@ We need to open the ports for MySQL and MySQL X protocols: `3306` and `33060`.
 
 ![VCN Security List](./images/vcn_security_list.png)
 
-We are adding a ingress rule on those ports from the internal VCN CIDR `10.0.0.0/16`.
+We are adding an ingress rule on those ports from the internal VCN CIDR `10.0.0.0/16`.
 
 ![VCN Add Ingress Rule](images/vcn_add_ingress_rules.png)
 
@@ -62,7 +62,7 @@ Click **Add Ingress Rules**` and fill the form with the following information:
 > 
 > Description: `MySQL and MySQL X Protocol`
 
-Leave the rest of fields with default values.
+Leave the rest of the fields with default values.
 
 Click **Add Ingress Rule** to confirm the values.
 
@@ -74,7 +74,7 @@ You can confirm the rules are added.
 
 ## Create Bastion Host
 
-We are going to create a compute in the Public Subnet with a public IP, it will be our access point to public and private resources.
+We are going to create a compute in the Public Subnet with a public IP; it will be our access point to public and private resources.
 
 Go to **Menu** > **Compute** > **Instances**.
 
@@ -104,11 +104,11 @@ Make sure the networking is like the following:
 
 On the section Add SSH Keys
 
-Make sure **Generate SSH Key pair** is checked.
+Make sure **Generate SSH Keypair** is checked.
 
 Click **Save Private Key** and **Save Public Key**.
 
-After the files are stored in your computer click **Create**.
+After the files are stored on your computer, click **Create**.
 
 ![Instance Values](./images/compute_create_ssh.png)
 
@@ -120,13 +120,13 @@ You can copy the assigned Public IP that we will use to SSH into the instance, a
 
 ![Compute Provisioning](./images/compute_public_ip.png)
 
-Make sure the Icon turn green and it says "RUNNING".
+Make sure the Icon turns green, and it says "RUNNING".
 
-To avoid install tools on your local computer, we are going to use Cloud Shell. Cloud Shell is a small and free Linux virtual machine with a lot of DevOps tools preinstalled. Click on Cloud Shell icon on the top-right menu bar.
+To avoid install tools on your local computer, we are going to use Cloud Shell. Cloud Shell is a small and free Linux virtual machine with a lot of DevOps tools preinstalled. Click on the Cloud Shell icon on the top-right menu bar.
 
 ![Cloud Shell](images/compute_cloud_shell.png)
 
-It will provision this small virtual machine and you will have access to its terminal from Oracle Cloud web console.
+It will provision this small virtual machine, and you will have access to its terminal from the Oracle Cloud Web Console.
 
 ![Cloud Shell terminal](images/cloud_shell.png)
 
@@ -140,7 +140,7 @@ Create `.ssh` folder for your SSH keys.
 mkdir .ssh
 ```
 
-Move the key file to your `.ssh` folder with a different name `id_rsa`, which is a default name.
+Move the key file to your `.ssh` folder with a different name, `id_rsa`, which is a default name.
 
 ```
 mv ssh-key-*.key .ssh/id_rsa
@@ -180,7 +180,7 @@ Connect with SSH again (remember to replace `PUBLIC_IP` with your bastion host I
 ssh opc@PUBLIC_IP
 ```
 
-This time you should be inside of the bastion host. This is the machine we will use to access MySQL Database System that lives in a private subnet, for security.
+This time you should be inside of the bastion host. This is the machine we will use to access MySQL Database System that lives in a private subnet for security.
 
 Install Docker:
 
@@ -202,7 +202,7 @@ sudo systemctl status docker
 
 ![Docker Service Active](./images/docker_service_active.png)
 
-If `active` then enable Docker as service.
+If `active`, then enable Docker as a service.
 
 ```
 sudo systemctl enable docker
@@ -214,7 +214,7 @@ sudo systemctl enable docker
 > sudo usermod -aG docker $USER
 > ```
 > 
-> For the changes to take place you need to `exit` and then `ssh` into the bastion host again
+> For the changes to take place, you need to `exit` and then `ssh` into the bastion host again
 
 Let's pull Mysql as a docker container:
 
@@ -244,7 +244,7 @@ Click on your new `bucket-study` bucket to see details.
 
 ![Create Bucket](./images/os_bucket_study.png)
 
-On the section **Objects** click **Upload**.
+On the section **Objects**, click **Upload**.
 
 ![Create Bucket](./images/os_object_upload.png)
 
@@ -260,7 +260,7 @@ Click **Upload**.
 
 Click **Close**.
 
-You will see the new file in the Objects list. Click on the 3 dots contextual menu.
+You will see the new file in the Objects list. Click on the three dots contextual menu.
 
 ![Object List with new File](./images/os_file_uploaded.png)
 

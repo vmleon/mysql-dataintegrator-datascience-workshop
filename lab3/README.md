@@ -2,13 +2,13 @@
 
 ![Data Integrator](./images/ocidi_banner.png)
 
-This lab walks you through the steps to get started using **Data Integrator** on Oracle Cloud Infrastructure (OCI). You will provision a new instance in just few minutes.
+This Lab walks you through the steps to get started using **Data Integrator** on Oracle Cloud Infrastructure (OCI). You will provision a new instance in just a few minutes.
 
 OCI Data Integration is a fully managed, serverless, native cloud service that helps you with common extract, load, and transform (ETL) tasks such as ingesting data from different sources, cleansing, transforming, and reshaping that data, and then efficiently loading it to target data sources on OCI.
 
 ## Create Your OCI Data Integrator instance
 
-We need to create some policies to allow Data Integrator service to use other services within OCI.
+We need to create some policies to allow the Data Integrator service to use other services within OCI.
 
 Go to **Identity** > **Policies**.
 
@@ -25,7 +25,7 @@ Create a new policy
 > 
 > Description: `Allow Data Integration Service to use VCN`
 >
-> Toogle: `Show manual editor`
+> Toggle: `Show manual editor`
 > 
 > Policy Builder: `allow service dataintegration to use virtual-network-family in tenancy`
 
@@ -63,7 +63,7 @@ Click **Create**.
 
 ![](./images/di_create_workshop.png)
 
-While the Workspace is created, click the 3 dots contextual menu.
+While the Workspace is created, click the three dots contextual menu.
 
 ![](./images/di_creating.png)
 
@@ -71,11 +71,11 @@ Then click **Copy OCID**.
 
 ![](./images/di_ocid.png)
 
-Go to **Identity** > **Policies**. We are going to add new policies for our new workspace.
+Go to **Identity** > **Policies**. We are going to add new policies for our new Workspace.
 
 ![](./images/di_workspace_policies_menu.png)
 
-Click on `dataintegration` policy name.
+Click on the `dataintegration` policy name.
 
 ![](./images/di_policy_link.png)
 
@@ -87,7 +87,7 @@ Click **+ Another Statement**.
 
 ![](./images/di_policy_add_policy.png)
 
-Add 2 more statements and make sure you set the workspace OCID. It will look like this one: 
+Add 2 more statements and make sure you set the Workspace OCID. It will look like this one: 
 
 The first statement:
 
@@ -127,7 +127,7 @@ Click on `bucket-study`.
 
 ![](images/os_bucket.png)
 
-On your `reef_life_survey_fish.csv` click on the 3 dots contextual menu.
+On your `reef_life_survey_fish.csv`, click on the three dots contextual menu.
 
 ![](images/os_object_menu.png)
 
@@ -147,21 +147,24 @@ Click on Tenancy.
 
 ![](images/profile_tenancy_menu.png)
 
-Tenancy details contains a lot of interesting information. Your Home Region, your **CSI number** for creating support tickets. Also your **Object Storate Namespace**. 
+Tenancy details contain a lot of interesting information, among others:
+- Your Home Region
+- Your **CSI number** for creating support tickets
+- Also, your **Object Storage Namespace**. 
 
-At this point we are interested in the Tenancy OCID. Copy the OCID by clicking on **Copy**. Write it down for the next step.
+At this point, we are interested in the Tenancy OCID. Copy the OCID by clicking on **Copy**. Write it down for the next step.
 
 ![](images/tenancy.png)
 
-> You can see that the Object Storage Namespace is here too, in case you need it in the future.
+> You can see that the Object Storage Namespace is here, too, in case you need it in the future.
 
 Let's create the Data Asset now.
 
-You can see that by default there is a `Default Application` and a project `My First Project`.
+You can see that by default, there is a `Default Application` and a project, `My First Project`.
 
 ![](./images/di_home_page.png)
 
-The first task is to create the data assets that represent the source and target for the data integration. In our case, the data source is an Object Storage bucket and the target is our MySQL database.
+The first task is to create the data assets that represent the source and target for the data integration. In our case, the data source is an Object Storage bucket, and the target is our MySQL database.
 
 Click **Create Data Asset**.
 
@@ -179,7 +182,7 @@ Fill the fields as follows:
 > 
 > Tenancy OCID: `ocid1.tenancy.oc1..muahahahahahahahaha`
 >
-> Click outside the Tenancy OCID field and after few seconds an OS Namespace will be retrieved automatically.
+> Click outside the Tenancy OCID field, and after few seconds, and OS Namespace will be retrieved automatically.
 
 ![](images/dataasset_fields1.png)
 
@@ -191,7 +194,7 @@ After you get a successful test, click **Create**.
 
 ![](images/dataasset_test_connection_success.png)
 
-Go back to Home.
+Go back to the Home Screen.
 
 ![](images/dataasset_os_back_home.png)
 

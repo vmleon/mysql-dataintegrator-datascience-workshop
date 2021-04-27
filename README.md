@@ -12,7 +12,7 @@ You want to **build a pipeline** for your data and run analytics with your favou
 
 You want to **learn Oracle Cloud Infrastructure**.
 
-You don't want to spend a dime until you are happy with the workflow.
+You want to explore **Oracle Cloud and its Free Tier**.
 
 ## Content
 
@@ -37,14 +37,13 @@ You don't want to spend a dime until you are happy with the workflow.
 
 - Create Your OCI Data Integrator instance
 - Create the Data Assets
+
+[Lab 4: Design and Run your ETL pipeline](lab4/README.md)
+
 - Create the Data Flow
 - Create the Integration Task
 - Publish the Integration Task
 - Run the Task
-
-[Lab 4: Design and Run your ETL pipeline](lab4/README.md)
-
-- XXX
 
 [Lab 5: Transform your Data into Insights](lab5/README.md)
 

@@ -2,7 +2,7 @@
 
 ![Oracle Cloud Free Tier Banner](./images/oracle_cloud_free_tier0.png)
 
-During this short lab, we will **Create**, **Sign In** and **Walk Through** the steps of setting up an **Oracle Cloud Free Tier** account.
+During this short Lab, we will **Create**, **Sign In** and **Walk Through** the steps of setting up an **Oracle Cloud Free Tier** account.
 
 ## Create Your Free Trial Account
 
@@ -14,10 +14,10 @@ What's included with **Oracle Cloud Free Tier**?
 
 **Always Free** and **Free Trial** instances can be seamlessly upgraded to pay at any time. Existing Oracle Cloud customers have access to Always Free services automatically—no new sign up required.
 
-To learn more about **Oracle Cloud Always Free** and **Free Trial** account check the following link:
+To learn more about **Oracle Cloud Always Free** and **Free Trial** account, check the following link:
 [https://www.oracle.com/cloud/free/#always-free](https://www.oracle.com/cloud/free/#always-free)
 
-As part of your sign up to this lab, you will have been provided a link to **Sign Up** to Oracle Cloud Free Tier. Please make sure you:
+As part of your sign up to this Lab, you will have been provided with a link to **Sign Up** to Oracle Cloud Free Tier. Please make sure you:
 
 - Use the **following URL** - [>> Sign Up for Oracle Cloud <<](http://bit.ly/34TzwGf)
 - Use a **personal email** address that you will use during all the workshop process.
@@ -26,10 +26,10 @@ On the Sign Up page, select your **Country/Territory**, enter your **email addre
 
 ![Sign Up Page](./images/oracle_cloud_free_tier1.png)
 
-On the "**Enter Account Details**" page you will be asked for **Account Type**, please select **Company Use** or **Personal Use** considering the purpose of this cloud account.
+On the "**Enter Account Details**" page, you will be asked for **Account Type**; please select **Company Use** or **Personal Use** considering the purpose of this cloud account.
 You will also be asked for the **Cloud Account Name** (also known as **Tenancy Name**). This will uniquely identify your cloud account and will be visible in your **URL** later, so please choose wisely.
 
-Finally, you will be asked also for the "**Home Region**". This is the location of the physical data center. You should select a data center that is geographically close to you and supports the required services.
+Finally, you will also be asked for the "**Home Region**". This is the location of the physical data centre. You should select a data centre that is geographically close to you and supports the required services.
 
 [You can review which services are available in each region using this page.](https://www.oracle.com/uk/cloud/data-regions.html#emea)
 
@@ -42,8 +42,8 @@ You will be prompted to enter the **Code** sent to your cell phone.
 
 ## Sign in to Your Account
 
-At the end of this process, you will receive an email titled "**Get Started Now with Oracle Cloud**". This will contain all the information you need to sign into your cloud account and include a link to the login page for your region.
-On that email you will receive a **Cloud Account** and **Username**.
+At the end of this process, you will receive an email titled "**Get Started Now with Oracle Cloud**". This will contain all the information you need to sign in to your cloud account and include a link to the login page for your region.
+On that email, you will receive a **Cloud Account** and **Username**.
 
 ![Sign Up Welcome Email](./images/oracle_cloud_free_tier4_1.png)
 
@@ -54,7 +54,7 @@ that it is required on the **Cloud Infrastructure Sign In Page**.
 
 - **Username** is the email address that you used for registration.
 
-- **Password**, you will be prompted to set a new one, more memorable password.
+- **Password**, you will be prompted to set a new, more memorable password.
 
 After click **Sign in**.
 
@@ -62,7 +62,7 @@ After click **Sign in**.
 ![Sign Up Welcome Console](./images/oracle_cloud_free_tier4_2.png)
 
 
-Otherwise go to [oracle.com](http://cloud.oracle.com).
+Otherwise, go to [oracle.com](http://cloud.oracle.com).
 
 ![Autonomous](./images/oracle_cloud_free_tier5.png)
 
@@ -86,7 +86,7 @@ You are now signed in to **Oracle Cloud!**
 
 You just created an Oracle Cloud Free Tier Account.
 
-Additionally you sign in with your account.
+Additionally, you sign in with your account.
 
 ## Congratulations, you are ready for the next Lab!
 

@@ -52,7 +52,7 @@ Set the following values:
 
 > Name: `Fish Survey`
 > 
-> Compute Instance Shape: `VM.Standard.E2.2` but others will work as well.
+> Compute Instance Shape: `VM.Standard.E2.2`, but others will work as well.
 > 
 > Block Storage Size: `50`
 > 
@@ -99,7 +99,7 @@ cnx = mysql.connector.connect(
 )
 ```
 
-Run the Notebook cell by cell clicking the **play** icon over and over until you reach the end.
+Run the Notebook cell by cell, clicking the **play** icon over and over until you reach the end.
 
 # Congratulations! Well done!
 

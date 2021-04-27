@@ -1,4 +1,4 @@
-# Lab 4: Design and Run your ETL pipeline
+# Lab 4: Design and Run your ETL Pipeline.
 
 ![DI Pipeline](./images/pipeline_banner.jpeg)
 
@@ -40,13 +40,13 @@ Set the Identifier and the rest of the info in the Source Properties panel:
 > 
 > Schema: `bucket-study`
 > 
-> Data entity: click **Browse By Name** and select `reef_life_survey_fish.csv`, all the default values are good, click **Select**.
+> Data entity: click **Browse By Name** and select `reef_life_survey_fish.csv`; all the default values are good, click **Select**.
 
-Set the Identifier and tehn go to Data Asset and click Select.
+Set the Identifier and then go to Data Asset and click Select.
 
 ![](images/dataflow_source_id.png)
 
-From the dropdown, select `bucket-study`. Select `Default Connection` and for schema the name of the bucket `bucket-study`,
+From the dropdown, select `bucket-study`. Select `Default Connection` and for Schema the name of the bucket `bucket-study`,
 
 ![](images/dataflow_source_data_asset_bucket.png)
 
@@ -74,7 +74,7 @@ Then click **Select**.
 
 ![](images/dataflow_source_data_entity_file_type_csv.png)
 
-At this point, your source has access to the Attributes where you can see the different fields of your dataset.
+At this point, your source has access to the Attributes, where you can see the different fields of your dataset.
 
 ![](images/dataflow_source_data_entity_attributes.png)
 
@@ -116,7 +116,7 @@ For Data Entity, we select the table `fish`.
 
 ![](images/dataflow_target_data_asset_data_entity_fish.png)
 
-At this point we can confirm we see the attributes from the table.
+At this point, we can confirm we see the attributes from the table.
 
 ![](images/dataflow_target_attributes.png)
 
@@ -177,7 +177,7 @@ On the Details menu (left), click on **Tasks**.
 
 ![](images/di_project_tasks_menu.png)
 
-Select **IntegrationTaskMySQL** and click **Publish to Application**.
+Select **IntegrationTaskMySQL**, and click **Publish to Application**.
 
 ![](images/di_project_tasks_publish_integration.png)
 
@@ -191,7 +191,7 @@ Go back  to the **Home** screen and click **Applications**.
 
 ![](images/di_application_menu.png)
 
-Select **Default Application** and you will see your task **IntegrationTaskMySQL**.
+Select **Default Application**, and you will see your task **IntegrationTaskMySQL**.
 
 ![](images/di_application_integration_dots.png)
 
@@ -215,13 +215,13 @@ Feel free to click **Refresh** from time to time until you see `Success` on the 
 
 ## It works
 
-On the bastion host in Cloud Shell (reconnect if timed out), and in the Terminal, run:
+On the bastion host in Cloud Shell (reconnect if timed out) and in the Terminal, run:
 
 ```
 mysqhlsh
 ```
 
-Run a query to check the number of rows in `fish` table.
+Run a query to check the number of rows in the `fish` table.
 
 Change to SQL mode:
 
@@ -229,7 +229,7 @@ Change to SQL mode:
 \sql
 ```
 
-Set `nature` as the schema in use.
+Set `nature` as the Schema in use.
 
 ```
 use nature;

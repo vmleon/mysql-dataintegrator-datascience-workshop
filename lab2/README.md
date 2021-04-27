@@ -2,7 +2,7 @@
 
 ![MySQL Database System](./images/mds_banner.png)
 
-**MySQL Database System** is a fully-managed Oracle Cloud Infrastructure service, developed, managed, and supported by the MySQL team in Oracle..
+**MySQL Database System** is a fully-managed Oracle Cloud Infrastructure service, developed, managed, and supported by the MySQL team in Oracle.
 
 ## Create an instance of MySQL in the cloud
 
@@ -22,7 +22,7 @@ Name your MySQL instance
 > 
 > Description (optional): `MySQL instance for Analytics`
 
-Between the three options, pick `HeatWave`. `Standalone` will work for the test but it doesn't include the Analytics Engine that will improve performance for Analytics.
+Between the three options, pick `HeatWave`. `Standalone` will work for the test, but it doesn't include the Analytics Engine that will improve performance for Analytics.
 
 For Username and password
 
@@ -30,7 +30,7 @@ For Username and password
 > 
 > Password: `R2d2&C3po!`
 > 
-> ConfirmPassword: `R2d2&C3po!`
+> Confirm Password: `R2d2&C3po!`
 
 ![](./images/mysql_create_db_fields.png)
 
@@ -62,17 +62,17 @@ The provisioning is around 10 minutes. The icon should change to `ACTIVE` in gre
 
 ![Active](./images/mds-active.png)
 
-Copy the private IP address from the MySQL DB System Information page, it will look like `10.0.1.xxx`.
+Copy the private IP address from the MySQL DB System Information page; it will look like `10.0.1.xxx`.
 
 ![](images/mysql_private_ip.png)
 
 ## Connect and create DB
 
-Download the file [SQL Fish Survey](./files/create_fish_survey.sql) where we have the SQL code to create the schema and table to hold the data.
+Download the file [SQL Fish Survey](./files/create_fish_survey.sql), where we have the SQL code to create the schema and table to hold the data.
 
-Let's upload the file to cloud Shell, and then to our Bastion host. From the bastion host we can run MySQL Shell to run the SQL file.
+Let's upload the file to Cloud Shell and then to our Bastion host. From the bastion host, we can run MySQL Shell to run the SQL file.
 
-Connect with Cloud Shell (if you close it or is no longer active).
+Connect with Cloud Shell (if you close it or it is no longer active).
 
 ![](./images/cloud_shell.png)
 
