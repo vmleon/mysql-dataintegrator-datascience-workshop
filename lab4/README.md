@@ -215,13 +215,15 @@ Feel free to click **Refresh** from time to time until you see `Success` on the 
 
 ## It works
 
-On the bastion host in Cloud Shell (reconnect if timed out) and in the Terminal, run:
+On the bastion host in Cloud Shell (reconnect if timed out), run the MySQL docker image and in the `bash` Terminal, run:
 
 ```
-mysqhlsh
+mysqlsh root@PRIVATE_IP
 ```
 
-Run a query to check the number of rows in the `fish` table.
+Put the MySQL password: `R2d2&C3po!`
+
+Run a query to check the number of rows in the `fish` table. And this is how:
 
 Change to SQL mode:
 
