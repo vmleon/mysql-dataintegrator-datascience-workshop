@@ -21,13 +21,29 @@ Click **Create Policy**.
 
 Create a new policy
 
-> Name: `dataintegration`
-> 
-> Description: `Allow Data Integration Service to use VCN`
->
-> Toggle: `Show manual editor`
-> 
-> Policy Builder: `allow service dataintegration to use virtual-network-family in tenancy`
+Name: 
+
+```
+dataintegration
+```
+
+Description: 
+
+```
+Allow Data Integration Service to use VCN
+```
+
+Toggle: 
+
+```
+Show manual editor
+```
+
+Policy Builder: 
+
+```
+allow service dataintegration to use virtual-network-family in tenancy
+```
 
 ![Policy fields for DI](./images/identity_policy_fields.png)
 
@@ -53,11 +69,23 @@ Click **Create Workspace**.
 
 Modify the following fields, leave the rest as default:
 
-> Name: `Workspace Nature`
-> 
-> VCN: `nature`
-> 
-> Subnet: `Private subnet-nature`
+Name: 
+
+```
+Workspace Nature
+```
+
+VCN: 
+
+```
+nature
+```
+
+Subnet: 
+
+```
+Private subnet-nature
+```
 
 Click **Create**.
 
@@ -87,18 +115,18 @@ Click **+ Another Statement**.
 
 ![](./images/di_policy_add_policy.png)
 
-Add 2 more statements and make sure you set the Workspace OCID. It will look like this one: 
+Add two more statements and make sure you replace `DATA_INTEGRATION_WORKSPACE_OCID` with the Workspace OCID: 
 
 The first statement:
 
 ```
-allow any-user to use buckets in tenancy where ALL {request.principal.type='disworkspace', request.principal.id='ocid1.disworkspace.oc1.XX-XXXXXXX-1.XXXXXXXXXXXXXXXXXXX'}
+allow any-user to use buckets in tenancy where ALL {request.principal.type='disworkspace', request.principal.id='DATA_INTEGRATION_WORKSPACE_OCID'}
 ```
 
 The second statement:
 
 ```
-allow any-user to manage objects in tenancy where ALL {request.principal.type='disworkspace',request.principal.id='ocid1.disworkspace.oc1.XX-XXXXXXX-1.XXXXXXXXXXXXXXXXXXX'}
+allow any-user to manage objects in tenancy where ALL {request.principal.type='disworkspace',request.principal.id='DATA_INTEGRATION_WORKSPACE_OCID'}
 ```
 
 Click **Save Changes**.
@@ -160,7 +188,17 @@ At this point, we are interested in the Tenancy OCID. Copy the OCID by clicking 
 
 Let's create the Data Asset now.
 
-You can see that by default, there is a `Default Application` and a project, `My First Project`.
+Go back to Your Data Integration Workspace:
+
+Go to **Menu** > **Data Integration**:
+
+![](images/di_menu.png)
+
+Click on **Workspace Nature**.
+
+![](images/di_workspace_enter.png)
+
+You can see that by default, there is a `Default Application` and a default project, `My First Project`.
 
 ![](./images/di_home_page.png)
 
@@ -172,17 +210,37 @@ Click **Create Data Asset**.
 
 Fill the fields as follows:
 
-> Name: `bucket-study`
-> 
-> Description: `Object Storage Bucket with fish survey`
-> 
-> Type: `Oracle Object Storage`
-> 
-> URL: `https://objectstorage.<REGION>.oraclecloud.com`
-> 
-> Tenancy OCID: `ocid1.tenancy.oc1..muahahahahahahahaha`
->
-> Click outside the Tenancy OCID field, and after few seconds, and OS Namespace will be retrieved automatically.
+Name: 
+
+```
+bucket-study
+```
+
+Description: 
+
+```
+Object Storage Bucket with fish survey
+```
+
+Type: 
+
+```
+Oracle Object Storage
+```
+
+URL: 
+
+```
+https://objectstorage.<REGION>.oraclecloud.com
+```
+
+Tenancy OCID: 
+
+```
+ocid1.tenancy.oc1..muahahahahahahahaha
+```
+
+Click outside the Tenancy OCID field, and after few seconds, and OS Namespace will be retrieved automatically.
 
 ![](images/dataasset_fields1.png)
 
@@ -204,21 +262,53 @@ Click **Create Data Assets** again.
 
 This time we are going to create the MySQL database asset with the following values:
 
-> Name: `mysql-database`
-> 
-> Description: `MySQL Database for Analytics`
-> 
-> Type: `MySQL`
-> 
-> Host: `10.0.1.x` (from MySQL created instance)
-> 
-> Port: `3306`
-> 
-> Database: `nature`
-> 
-> User: `root`
-> 
-> Password: `R2d2&C3po!`
+Name: 
+
+```
+mysql-database
+```
+
+Description: 
+
+```
+MySQL Database for Analytics
+```
+
+Type: 
+
+```
+MySQL
+```
+
+Host (from MySQL created instance): 
+
+```
+10.0.1.x
+```
+
+Port: 
+
+```
+3306
+```
+
+Database: 
+
+```
+nature
+```
+
+User: 
+
+```
+root
+```
+
+Password: 
+
+```
+R2d2&C3po!
+```
 
 ![](images/dataasset_mysql_fields1.png)
 
@@ -236,7 +326,9 @@ When the data asset is created, go back to Home.
 
 ## It works
 
-XXX
+Go back to the **Home** Screen. You have just created the two Data Assets needed for the next Lab. Your **Recents** should look like this:
+
+![](images/di_dataassets_success.png)
 
 ## Congratulations, you are ready for the next Lab!
 
