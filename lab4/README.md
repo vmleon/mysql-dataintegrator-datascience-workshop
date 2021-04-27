@@ -2,7 +2,11 @@
 
 ![DI Pipeline](./images/pipeline_banner.jpeg)
 
-XXX.
+A data flow is a visual program representing the flow of data from source data assets, such as a database or flat file, to target data assets, such as a data lake or data warehouse.
+
+The flow of data from source to target can undergo a series of transforms to aggregate, cleanse, and shape the data.
+
+Data engineers and ETL developers can then analyze or gather insights and use that data to make business decisions.
 
 ## Create the Data Flow
 
@@ -12,11 +16,23 @@ Click **Create Data Flow**.
 
 Set the Name, Project and Description in the New Data Flow Panel
 
-> Name: `CSV to MySQL`
-> 
-> Project or Folder: `My First Project`
-> 
-> Description: `Data Flow from CSV on Object Storage to MySQL Database`
+Name: 
+
+```
+CSV to MySQL
+```
+
+Project or Folder: 
+
+```
+My First Project
+```
+
+Description: 
+
+```
+Data Flow from CSV on Object Storage to MySQL Database
+```
 
 To select the Project, click on `My First Project` and **Select**.
 
@@ -32,15 +48,33 @@ From the Operators panel, drag and drop the Source icon into the canvas.
 
 Set the Identifier and the rest of the info in the Source Properties panel:
 
-> Identifier: `FISH_SURVEY`
-> 
-> Data Asset: `bucket-study`
-> 
-> Connection: `Default Connection`
-> 
-> Schema: `bucket-study`
-> 
-> Data entity: click **Browse By Name** and select `reef_life_survey_fish.csv`; all the default values are good, click **Select**.
+Identifier: 
+
+```
+FISH_SURVEY
+```
+
+Data Asset: 
+
+```
+bucket-study
+```
+
+Connection: 
+
+```
+Default Connection
+```
+
+Schema: 
+
+```
+bucket-study
+```
+
+Data entity: 
+
+Click **Browse By Name** and select `reef_life_survey_fish.csv`; all the default values are good, click **Select**.
 
 Set the Identifier and then go to Data Asset and click Select.
 
@@ -74,30 +108,50 @@ Then click **Select**.
 
 ![](images/dataflow_source_data_entity_file_type_csv.png)
 
-At this point, your source has access to the Attributes, where you can see the different fields of your dataset.
+At this point, your source has access to the **Attributes**, where you can see the different fields of your dataset.
 
 ![](images/dataflow_source_data_entity_attributes.png)
 
-Confirm you can see attributes and Data.
+Confirm you can see Attributes and Data.
 
 Let's move into the target for our MySQL Database.
 
-Drag and Drop the Target icon into the canvas.
+Drag and Drop the **Target** icon into the canvas.
 
 ![](images/dataflow_target_dnd.png)
 
 
 Set the Identifier and the rest of the info in the Target:
 
-> Identifier: `MySQL DB`
-> 
-> Data Asset: `mysql-database`
-> 
-> Connection: `Default Connection`
-> 
-> Schema: `nature`
-> 
-> Data entity: `fish`
+Identifier: 
+
+```
+MySQL DB
+```
+
+Data Asset: 
+
+```
+mysql-database
+```
+
+Connection: 
+
+```
+Default Connection
+```
+
+Schema: 
+
+```
+nature
+```
+
+Data entity: 
+
+```
+fish
+```
 
 ![](images/dataflow_target_id.png)
 
@@ -149,13 +203,29 @@ Go back to Home and Click **Create Integration Task**.
 
 Set the Name and the rest of the info as follows:
 
-> Name: `IntegrationTaskMySQL`
-> 
-> Description: `Integration Task MySQL`
-> 
-> Project or Folder: `My First Project`
-> 
-> Data Flow: `CSV to MySQL`
+Name: 
+
+```
+IntegrationTaskMySQL
+```
+
+Description: 
+
+```
+Integration Task MySQL
+```
+
+Project or Folder: 
+
+```
+My First Project
+```
+
+Data Flow: 
+
+```
+CSV to MySQL
+```
 
 ![](images/integrationtask_fields.png)
 
