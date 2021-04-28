@@ -16,8 +16,9 @@ Go to **Identity** > **Policies**.
 
 Click **Create Policy**.
 
-![Create Policy](./images/identity_create_policy.png)
+Make sure you are in the `root` compartment.
 
+![Create Policy](./images/identity_create_policy.png)
 
 Create a new policy
 
@@ -145,27 +146,27 @@ Check the Data Integration Workspace is `Active` and click the link.
 
 We are going to need the Object Storage URL and Tenancy ID.
 
-### Get Object Storage URL
+### Keep the Object Storage URL at hand
 
-Go to Object Storage.
+You have this URL from Lab number 1. The URL depends on the region you are doing the workshop.
 
-![](./images/os_menu.png)
+Some examples for different URLs depending on the region are, check yours:
 
-Click on `bucket-study`.
+| Region    | Object Storage URL                                     |
+| --------- | ------------------------------------------------------ |
+| Frankfurt | `https://objectstorage.eu-frankfurt-1.oraclecloud.com` |
+| London    | `https://objectstorage.uk-london-1.oraclecloud.com`    |
+| Zurich    | `https://objectstorage.eu-zurich-1.oraclecloud.com`    |
+| Dubai     | `https://objectstorage.me-dubai-1.oraclecloud.com`     |
+| Jeddah    | `https://objectstorage.me-jeddah-1.oraclecloud.com`    |
+| Amsterdam | `https://objectstorage.eu-amsterdam-1.oraclecloud.com` |
+| Mumbai    | `https://objectstorage.ap-mumbai-1.oraclecloud.com`    |
+| Cardiff   | `https://objectstorage.uk-cardiff-1.oraclecloud.com`   |
+| Ashburn   | `https://objectstorage.us-ashburn-1.oraclecloud.com`   |
+| Phoenix   | `https://objectstorage.us-phoenix-1.oraclecloud.com`   |
+| Hyderabad | `https://objectstorage.ap-hyderabad-1.oraclecloud.com` |
 
-![](images/os_bucket.png)
-
-On your `reef_life_survey_fish.csv`, click on the three dots contextual menu.
-
-![](images/os_object_menu.png)
-
-Click on **View Object Details**.
-
-![](images/os_view_object_details.png)
-
-Copy the first part of the URL domain, something like here `https://objectstorage.uk-london-1.oraclecloud.com`.
-
-![](images/os_url.png)
+Check for more in the Official documentation: [Object Storage Service API](https://docs.oracle.com/en-us/iaas/api/#/en/objectstorage/20160918/).
 
 ### Get Tenancy OCID
 

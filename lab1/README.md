@@ -121,9 +121,9 @@ Shape for Always Free:
 VM.Standard.E2.1.Micro
 ```
 
-Alternative Shape cloud be:
+Alternative Shape could be:
 ```
-VM.Standard.E3.Flex
+VM.Standard.E2.Flex, VM.Standard.E3.Flex, VM.Standard.E4.Flex
 ```
 
 Virtual cloud network: 
@@ -180,6 +180,8 @@ Click on the Cloud Shell **menu** icon and then in **Upload**.
 
 Click on **select from your computer**. And select the private key you downloaded for the compute instance.
 
+> You don't need to upload the public key (`.pub` file), but feel free to do it.
+
 ![Cloud Shell terminal](images/cloud_shell_select_file.png)
 
 After you Upload the file you can **Hide** the message.
@@ -192,16 +194,16 @@ On Cloud Shell terminal, create `.ssh` folder for your SSH keys.
 mkdir -p .ssh
 ```
 
-Move the key file to your `.ssh` folder with a different name, `id_rsa`, which is a default name.
+Move the key file to your `.ssh` folder with a different name, `bastion`.
 
 ```
-mv ssh-key-*.key .ssh/id_rsa
+mv ssh-key-*.key .ssh/bastion
 ```
 
 Connect with your bastion host with SSH. The `PUBLIC_IP` was copied when the bastion host was created.
 
 ```
-ssh opc@PUBLIC_IP
+ssh -i ~/.ssh/bastion opc@PUBLIC_IP
 ```
 
 To the question `Are you sure you want to continue connecting (yes/no/[fingerprint])?` type `yes` and ENTER.
@@ -213,31 +215,37 @@ Warning: Permanently added 'xxx.xxx.xxx.xxx' (ECDSA) to the list of known hosts.
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-Permissions 0644 for '/home/it/.ssh/id_rsa' are too open.
+Permissions 0644 for '/home/it/.ssh/bastion' are too open.
 It is required that your private key files are NOT accessible by others.
 This private key will be ignored.
-Load key "/home/it/.ssh/id_rsa": bad permissions
+Load key "/home/it/.ssh/bastion": bad permissions
 Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
 ```
 
 Security first, let's fix the permissions to `600` with the following command:
 
 ```
-chmod 600 .ssh/id_rsa
+chmod 600 .ssh/bastion
 ```
 
 Connect with SSH again (remember to replace `PUBLIC_IP` with your bastion host IP):
 
 ```
-ssh opc@PUBLIC_IP
+ssh -i ~/.ssh/bastion opc@PUBLIC_IP
 ```
 
 This time you should be inside of the bastion host. This is the machine we will use to access MySQL Database System that lives in a private subnet.
 
+Update your Linux (it might take few minutes):
+
+```bash
+sudo yum update -y
+```
+
 Install Docker:
 
 ```bash
-sudo yum update -y && sudo yum install docker-engine -y
+sudo yum install docker-engine -y
 ```
 
 Start Docker Engine:
@@ -246,7 +254,7 @@ Start Docker Engine:
 sudo systemctl start docker
 ```
 
-Check it is running:
+Check that docker is running:
 
 ```
 sudo systemctl status docker
@@ -326,7 +334,7 @@ On the contextual menu, select **View Object Details**.
 
 ![Object Details Menu](./images/os_object_details_menu.png)
 
-Take note of the URL you have. We will use it in the following Labs.
+Take note of the URL you have. We will use it in the Lab number 3.
 
 ![Object Details URL](./images/os_object_details_url.png)
 

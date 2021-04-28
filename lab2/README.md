@@ -118,48 +118,26 @@ Copy the private IP address from the MySQL DB System Information page; it will l
 
 ## Connect and create DB
 
-Download the file [SQL Fish Survey](https://raw.githubusercontent.com/vmleon/mysql-dataintegrator-datascience-workshop/main/lab2/files/create_fish_survey.sql), where we have the SQL code to create the schema and table to hold the data.
-
-Let's upload the file to Cloud Shell and then to our Bastion host with `scp`. From the bastion host, we can run MySQL Shell to run the SQL file. Just follow the steps.
-
 Connect with Cloud Shell (if you close it or it is no longer active).
 
 ![](./images/cloud_shell.png)
 
-Click **Cloud Shell menu** and then **Upload**.
-
-![](./images/cloud_shell_upload_sql.png)
-
-**Select** the file `create_fish_survey.sql` and click Upload.
-
-![](./images/cloud_shell_upload_select_file.png)
-
-**Hide** the popup window when completed.
-
-![](./images/cloud_shell_upload_completed.png)
-
-Now, on the Cloud Shell terminal, we are going to copy the file into the bastion host with (replace `PUBLIC_IP` with your bastion host IP):
-
-```
-scp create_fish_survey.sql opc@PUBLIC_IP:/home/opc/
-```
-
 SSH into the bastion host:
 
 ```
-ssh opc@PUBLIC_IP
+ssh -i ~/.ssh/bastion opc@PUBLIC_IP
 ```
 
 Run a docker image with MySQL Shell:
 
 ```
-sudo docker run -it --rm --name mysql -v $(pwd):/tmp mysql/mysql-server bash
+sudo docker run -it --rm --name mysql mysql/mysql-server bash
 ```
 
 When in the docker container, replace `PRIVATE_IP` with the correct MySQL Private IP and run the command:
 
 ```
-cat /tmp/create_fish_survey.sql | mysqlsh --sql root@PRIVATE_IP
+curl https://raw.githubusercontent.com/vmleon/mysql-dataintegrator-datascience-workshop/main/lab2/files/create_fish_survey.sql | mysqlsh --sql root@PRIVATE_IP
 ```
 
 It will ask for the password (`Please provide the password for 'root@PRIVATE_IP':`). Type the MySQL DB password:

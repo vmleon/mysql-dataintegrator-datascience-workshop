@@ -49,6 +49,8 @@ Go to **Menu** > **Identity** > **Policies**.
 
 Click **Create Policy**.
 
+Make sure you are in the `root` compartment.
+
 ![](images/ds_policies_create_button.png)
 
 Use the following information:

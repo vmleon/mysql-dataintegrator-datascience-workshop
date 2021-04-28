@@ -46,7 +46,7 @@ From the Operators panel, drag and drop the Source icon into the canvas.
 
 ![](images/dataflow_source_dnd.png)
 
-Set the Identifier and the rest of the info in the Source Properties panel:
+Set the Identifier and the rest of the info in the **Details** tab from the Source Properties panel:
 
 Identifier: 
 
@@ -174,15 +174,15 @@ At this point, we can confirm we see the attributes from the table.
 
 ![](images/dataflow_target_attributes.png)
 
-Time to wire source and target. Drag and drop the link between `FISH_SURVEY` and `MYSQL_DB`.
+Time to wire source and target. Draw the link between `FISH_SURVEY` and `MYSQL_DB`. Starting from the circle in `FISH_SURVEY` source box and finishing over `MYSQL_DB` target box.
 
 ![](images/dataflow_source_to_target.png)
 
-To build the link between source and target.
+The final result should look like the following.
 
 ![](images/dataflow_source_to_target_linked.png)
 
-Click on the **Map** tab on the Properties panel and drag and drop the `Not Mapped` fields until they are all mapped.
+Make sure `MYSQL_DB` target is selected (green border) and click on the **Map** tab on the Properties panel and drag and drop the fields with NO `Auto` in the row. Do it until they are all mapped.
 
 ![](images/dataflow_source_to_target_map.png)
 
