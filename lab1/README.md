@@ -198,7 +198,7 @@ Move the key file to your `.ssh` folder with a different name, `id_rsa`, which i
 mv ssh-key-*.key .ssh/id_rsa
 ```
 
-Connect with your bastion host with SSH. Yhe `PUBLIC_IP` was copied when the bastion host was created.
+Connect with your bastion host with SSH. The `PUBLIC_IP` was copied when the bastion host was created.
 
 ```
 ssh opc@PUBLIC_IP
