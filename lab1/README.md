@@ -189,7 +189,7 @@ After you Upload the file you can **Hide** the message.
 On Cloud Shell terminal, create `.ssh` folder for your SSH keys.
 
 ```
-mkdir .ssh
+mkdir -p .ssh
 ```
 
 Move the key file to your `.ssh` folder with a different name, `id_rsa`, which is a default name.
@@ -306,7 +306,7 @@ On the section **Objects**, click **Upload**.
 
 ![Create Bucket](./images/os_object_upload.png)
 
-Download the dataset [Reef Life Survey Fish](./files/reef_life_survey_fish.csv).
+Download the dataset [Reef Life Survey Fish](https://raw.githubusercontent.com/vmleon/mysql-dataintegrator-datascience-workshop/main/lab1/files/reef_life_survey_fish.csv).
 
 Drop the file on **Choose Files from your Computer**. Leave everything else by default.
 

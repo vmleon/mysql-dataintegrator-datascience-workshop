@@ -14,17 +14,23 @@ Click **Create Dynamic Group**.
 
 ![](images/ds_dynamic_group_create_button.png)
 
+Set the following values:
+
+Name:
 ```
 datascience
 ```
 
+Description:
 ```
 Data Science Dynamic Group
 ```
 
+Rule 1 (Matching Rules):
 ```
 ALL { resource.type = 'datasciencenotebooksession' }
 ```
+
 Click **Create**.
 
 ![](images/ds_dynamic_group_create.png)
@@ -47,19 +53,21 @@ Click **Create Policy**.
 
 Use the following information:
 
+Name:
 ```
 datascience
 ```
 
+Description:
 ```
 Data Science to use network resources
 ```
 
+Toggle **Show manual editor**
+
+Policy Builder:
 ```
 allow service datascience to use virtual-network-family in tenancy
-```
-
-```
 allow dynamic-group datascience to manage data-science-family in tenancy
 ```
 
@@ -71,13 +79,14 @@ The Policy for Data Science has been created.
 
 ![](images/ds_policies_create_review.png)
 
+> If you have created an Oracle Cloud Account to do the workshop, you are already the Administrator. You DO NOT NEED TO DO THIS STEP.
 > 
-> Non-Administrators
+> In case you are a Non-admin user, you will need to set up some more policies to allow the group you belong to. Ask your administrator.
 > 
-> `allow group <data-scientists> to use virtual-network-family in tenancy`
-> 
-> `allow group <data-scientists> to manage data-science-family in tenancy`
->
+> ```
+> allow group <data-scientists> to use virtual-network-family in tenancy
+> allow group <data-scientists> to manage data-science-family in tenancy
+> ```
 
 ---
 
@@ -190,15 +199,13 @@ Click **Upload files**.
 
 ![](images/ds_notebook_upload.png)
 
-Select `FishSurvey.ipynb` from your disk.
+Select `FishSurvey.ipynb` from your disk. the upload will complete.
 
 Your `FishSurvey.ipynb` will be loaded on the side panel.
 
 ![](images/ds_notebook_fish_notebook.png)
 
 Double click on **FishSurvey.ipynb**.
-
-![](images/ds_notebook_fish_notebook_run.png)
 
 Make sure you modify `PRIVATE_IP` on the following code in the Notebook with the Private IP from your MySQL Database System.
 
@@ -210,6 +217,8 @@ cnx = mysql.connector.connect(
   database="nature"
 )
 ```
+
+![](images/ds_notebook_fish_notebook_run.png)
 
 Run the Notebook cell by cell, clicking the **play** icon over and over until you reach the end.
 
