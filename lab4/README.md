@@ -313,6 +313,12 @@ Count the number of rows in the table `fish`.
 select count(1) from fish;
 ```
 
+Exit with:
+
+```
+\exit
+```
+
 ## Congratulations, you are ready for the next Lab!
 
 ---

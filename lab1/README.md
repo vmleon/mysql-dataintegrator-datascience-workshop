@@ -274,8 +274,6 @@ Let's pull MySQL as a docker container:
 sudo docker pull mysql/mysql-server
 ```
 
-You can close Cloud Shell for now.
-
 ---
 
 ## Create Object Storage and upload files
