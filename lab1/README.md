@@ -1,6 +1,6 @@
 # Lab 1: Requirements
 
-![Requirements](./images/requirements.png)
+![Requirements](images/requirements.png)
 
 ## Create Virtual Cloud Network (VCN)
 
@@ -10,15 +10,15 @@ This network layout is interesting to protect those services that don't need to 
 
 Go to **Menu** > **Networking** > **Virtual Cloud Networks**.
 
-![VCN menu](./images/vcn_menu.png)
+![VCN menu](images/vcn_menu.png)
 
 > If you have not picked a compartment, pick the **root** compartment for this Lab.
 > 
-> ![Pick Compartment](./images/pick_compartment.png)
+> ![Pick Compartment](images/pick_compartment.png)
 
 Click **Start VCN Wizard**.
 
-![Start VCN Wizard](./images/start_vcn_wizard.png)
+![Start VCN Wizard](images/start_vcn_wizard.png)
 
 Select **VCN with Internet Connectivity**.
 
@@ -35,26 +35,26 @@ nature
 
 Click **Next**.
 
-![VCN Name](./images/vcn_name.png)
+![VCN Name](images/vcn_name.png)
 
 Review all the details and click **Create**.
 
-![VCN Review](./images/vcn_review.png)
+![VCN Review](images/vcn_review.png)
 
 The creation process takes few seconds. Confirm everything is created (green tick on all resources) before you continue.
 
 Click **View Virtual Cloud Network**.
 
-![VCN Creation OK](./images/vcn_create_ok.png)
+![VCN Creation OK](images/vcn_create_ok.png)
 
 Go to your new **Private Subnet-nature**.
 
-![VCN Private Subnet](./images/vcn_private_subnet.png)
+![VCN Private Subnet](images/vcn_private_subnet.png)
 
 Click **Security List for Private Subnet-nature**.
 
 
-![VCN Security List](./images/vcn_security_list.png)
+![VCN Security List](images/vcn_security_list.png)
 
 We need to open the ports for MySQL and MySQL X protocols: `3306` and `33060`.
 
@@ -87,7 +87,7 @@ And click **Add Ingress Rule** to confirm the values.
 
 You can confirm the rules are added.
 
-![VCN Security List Rules for MySQL](./images/vcn_security_list_for_mysql.png)
+![VCN Security List Rules for MySQL](images/vcn_security_list_for_mysql.png)
 
 ---
 
@@ -97,11 +97,11 @@ We are going to create a compute instance in the Public Subnet with a public IP;
 
 Go to **Menu** > **Compute** > **Instances**.
 
-![Compute Instance Menu](./images/compute_instance_menu.png)
+![Compute Instance Menu](images/compute_instance_menu.png)
 
 Click **Create Instance**.
 
-![Create Intance Button](./images/compute_create_instance_button.png)
+![Create Intance Button](images/compute_create_instance_button.png)
 
 Change the name to:
 
@@ -141,7 +141,7 @@ Assign a public IPv4 address:
 Yes
 ```
 
-![Instance Values](./images/compute_create_values.png)
+![Instance Values](images/compute_create_values.png)
 
 On the section Add SSH Keys
 
@@ -151,17 +151,17 @@ Click **Save Private Key** and **Save Public Key**.
 
 After the files are stored on your computer, click **Create**.
 
-![Instance Values](./images/compute_create_ssh.png)
+![Instance Values](images/compute_create_ssh.png)
 
 The provisioning takes few minutes.
 
-![Compute Provisioning](./images/compute_provisioning.png)
+![Compute Provisioning](images/compute_provisioning.png)
 
 You can copy the assigned Public IP that we will use to SSH into the instance, also notice that the username is `opc`.
 
 Make sure the Icon turns green, and it says "RUNNING".
 
-![Compute Provisioning](./images/compute_public_ip.png)
+![Compute Provisioning](images/compute_public_ip.png)
 
 
 To avoid install tools on your local computer, we are going to use Cloud Shell. Cloud Shell is a small and free Linux virtual machine with a lot of DevOps tools preinstalled that Oracle Cloud offers.
@@ -260,7 +260,7 @@ Check that docker is running:
 sudo systemctl status docker
 ```
 
-![Docker Service Active](./images/docker_service_active.png)
+![Docker Service Active](images/docker_service_active.png)
 
 If `active`, then enable Docker as a service.
 
@@ -288,11 +288,11 @@ sudo docker pull mysql/mysql-server
 
 Go to **Menu** > **Object Storage** > **Object Storage**.
 
-![Object Storage Menu](./images/os_menu.png)
+![Object Storage Menu](images/os_menu.png)
 
 Click **Create Bucket**.
 
-![Create Bucket](./images/os_create_bucket.png)
+![Create Bucket](images/os_create_bucket.png)
 
 Change the bucket name, leave everything else by default.
 
@@ -304,39 +304,39 @@ bucket-study
 
 Click **Create**.
 
-![Bucket Name](./images/os_bucket_name.png)
+![Bucket Name](images/os_bucket_name.png)
 
 Click on your new `bucket-study` bucket to see details.
 
-![Create Bucket](./images/os_bucket_study.png)
+![Create Bucket](images/os_bucket_study.png)
 
 On the section **Objects**, click **Upload**.
 
-![Create Bucket](./images/os_object_upload.png)
+![Create Bucket](images/os_object_upload.png)
 
 Download the dataset [Reef Life Survey Fish](https://raw.githubusercontent.com/vmleon/mysql-dataintegrator-datascience-workshop/main/lab1/files/reef_life_survey_fish.csv).
 
 Drop the file on **Choose Files from your Computer**. Leave everything else by default.
 
-![Object Select File](./images/os_object_select_file.png)
+![Object Select File](images/os_object_select_file.png)
 
 Click **Upload**.
 
-![Object Upload Reef File](./images/os_object_reef_upload.png)
+![Object Upload Reef File](images/os_object_reef_upload.png)
 
 Click **Close**.
 
 You will see the new file in the Objects list. Click on the three dots contextual menu.
 
-![Object List with new File](./images/os_file_uploaded.png)
+![Object List with new File](images/os_file_uploaded.png)
 
 On the contextual menu, select **View Object Details**.
 
-![Object Details Menu](./images/os_object_details_menu.png)
+![Object Details Menu](images/os_object_details_menu.png)
 
 Take note of the URL you have. We will use it in the Lab number 3.
 
-![Object Details URL](./images/os_object_details_url.png)
+![Object Details URL](images/os_object_details_url.png)
 
 ## Congratulations! You are ready to go to the next Lab!
 

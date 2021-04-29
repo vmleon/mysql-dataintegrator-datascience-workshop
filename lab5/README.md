@@ -1,6 +1,6 @@
 # Lab 5: Transform your Data into Insights
 
-![Data Science](./images/ds_banner.jpg)
+![Data Science](images/ds_banner.jpg)
 
 **Oracle Data Science**: Build high-quality models faster and easier. Automated machine learning capabilities rapidly examine the data and recommend the optimal data features and best algorithms. Additionally, automated machine learning tunes the model and explains the model’s results.
 
@@ -160,9 +160,9 @@ Click **Create**.
 
 The status icon will change from Creating to Active:
 
-![Creating](./images/datascience-creating.png)
+![Creating](images/datascience-creating.png)
 
-![Active](./images/datascience-active.png)
+![Active](images/datascience-active.png)
 
 When the Notebook is active, click **Open**.
 
@@ -201,7 +201,7 @@ Click **Upload files**.
 
 ![](images/ds_notebook_upload.png)
 
-Select `FishSurvey.ipynb` from your disk. the upload will complete.
+Select `FishSurvey.ipynb` from your disk. Wait for the upload to complete.
 
 Your `FishSurvey.ipynb` will be loaded on the side panel.
 
@@ -222,7 +222,7 @@ cnx = mysql.connector.connect(
 
 ![](images/ds_notebook_fish_notebook_run.png)
 
-Run the Notebook cell by cell, clicking the **play** icon over and over until you reach the end.
+Select the rest paragraph (called Cell) of the Notebook and run the Notebook cell by cell by clicking the **play** icon over and over until you reach the end.
 
 ![](images/ds_notebook_fish_notebook_head.png)
 

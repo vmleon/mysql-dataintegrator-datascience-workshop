@@ -1,6 +1,6 @@
 # Lab 4: Design and Run your ETL Pipeline.
 
-![DI Pipeline](./images/pipeline_banner.jpeg)
+![DI Pipeline](images/pipeline_banner.jpeg)
 
 A data flow is a visual program representing the flow of data from source data assets, such as a database or flat file, to target data assets, such as a data lake or data warehouse.
 

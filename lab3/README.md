@@ -1,6 +1,6 @@
 # Lab 3: Create Data Integration Instance
 
-![Data Integration](./images/ocidi_banner.png)
+![Data Integration](images/ocidi_banner.png)
 
 This Lab walks you through the steps to get started using **Data Integration** on Oracle Cloud Infrastructure (OCI). You will provision a new instance in just a few minutes.
 
@@ -12,13 +12,13 @@ We need to create some policies to allow the Data Integration service to use oth
 
 Go to **Identity** > **Policies**.
 
-![Identity Policy Menu](./images/identity_policies_menu.png)
+![Identity Policy Menu](images/identity_policies_menu.png)
 
 Click **Create Policy**.
 
 Make sure you are in the `root` compartment.
 
-![Create Policy](./images/identity_create_policy.png)
+![Create Policy](images/identity_create_policy.png)
 
 Create a new policy
 
@@ -46,7 +46,7 @@ Policy Builder:
 allow service dataintegration to use virtual-network-family in tenancy
 ```
 
-![Policy fields for DI](./images/identity_policy_fields.png)
+![Policy fields for DI](images/identity_policy_fields.png)
 
 
 > If you have created an Oracle Cloud Account to do the workshop, you are already the Administrator. You DO NOT NEED TO DO THIS STEP.
@@ -62,11 +62,11 @@ allow service dataintegration to use virtual-network-family in tenancy
 
 Go to **Menu** > **Data Integration**.
 
-![](./images/di_menu.png)
+![](images/di_menu.png)
 
 Click **Create Workspace**.
 
-![](./images/di_create_workshop_button.png)
+![](images/di_create_workshop_button.png)
 
 Modify the following fields, leave the rest as default:
 
@@ -90,31 +90,31 @@ Private subnet-nature
 
 Click **Create**.
 
-![](./images/di_create_workshop.png)
+![](images/di_create_workshop.png)
 
 While the Workspace is created, click the three dots contextual menu.
 
-![](./images/di_creating.png)
+![](images/di_creating.png)
 
 Then click **Copy OCID**.
 
-![](./images/di_ocid.png)
+![](images/di_ocid.png)
 
 Go to **Identity** > **Policies**. We are going to add new policies for our new Workspace.
 
-![](./images/di_workspace_policies_menu.png)
+![](images/di_workspace_policies_menu.png)
 
 Click on the `dataintegration` policy name.
 
-![](./images/di_policy_link.png)
+![](images/di_policy_link.png)
 
 Click **Edit Policy Statements**.
 
-![](./images/di_policy_edit_button.png)
+![](images/di_policy_edit_button.png)
 
 Click **+ Another Statement**.
 
-![](./images/di_policy_add_policy.png)
+![](images/di_policy_add_policy.png)
 
 Add two more statements and make sure you replace `DATA_INTEGRATION_WORKSPACE_OCID` with the Workspace OCID: 
 
@@ -132,11 +132,11 @@ allow any-user to manage objects in tenancy where ALL {request.principal.type='d
 
 Click **Save Changes**.
 
-![](./images/di_policy_save_changes.png)
+![](images/di_policy_save_changes.png)
 
 Come back to Data Integration, Click **Menu** > **Data Integration**.
 
-![](./images/di_back_to_data_integration.png)
+![](images/di_back_to_data_integration.png)
 
 Check the Data Integration Workspace is `Active` and click the link.
 
@@ -201,13 +201,13 @@ Click on **Workspace Nature**.
 
 You can see that by default, there is a `Default Application` and a default project, `My First Project`.
 
-![](./images/di_home_page.png)
+![](images/di_home_page.png)
 
 The first task is to create the data assets that represent the source and target for the data integration. In our case, the data source is an Object Storage bucket, and the target is our MySQL database.
 
 Click **Create Data Asset**.
 
-![](./images/di_home_create_asset_bucket.png)
+![](images/di_home_create_asset_bucket.png)
 
 Fill the fields as follows:
 

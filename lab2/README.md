@@ -1,6 +1,6 @@
 # Lab 2: Create MySQL Database System
 
-![MySQL Database System](./images/mds_banner.png)
+![MySQL Database System](images/mds_banner.png)
 
 **MySQL Database System** is a fully-managed Oracle Cloud Infrastructure service, developed, managed, and supported by the MySQL team in Oracle.
 
@@ -8,13 +8,13 @@
 
 Go to **Menu** > **MySQL** > **DB Systems**.
 
-![](./images/mysql_menu.png)
+![](images/mysql_menu.png)
 
 Click **Create MySQL DB System**.
 
 Make sure your root compartment (or the one you want) is selected.
 
-![](./images/mysql_create_button.png)
+![](images/mysql_create_button.png)
 
 Name your MySQL instance
 
@@ -52,7 +52,7 @@ Confirm Password:
 R2d2&C3po!
 ```
 
-![](./images/mysql_create_db_fields.png)
+![](images/mysql_create_db_fields.png)
 
 Network configuration:
 
@@ -68,7 +68,7 @@ Subnet:
 Private Subnet-nature (Regional)
 ```
 
-![](./images/mysql_vcn_fields.png)
+![](images/mysql_vcn_fields.png)
 
 Everything else is good by default:
 
@@ -104,13 +104,13 @@ Enable Automatic Backups
 
 Click **Create**.
 
-![](./images/mysql_shape_fields.png)
+![](images/mysql_shape_fields.png)
 
 The provisioning is around 10 minutes. The icon should change to `ACTIVE` in green:
 
-![Provisioning](./images/mds-provisioning.png)
+![Provisioning](images/mds-provisioning.png)
 
-![Active](./images/mds-active.png)
+![Active](images/mds-active.png)
 
 Copy the private IP address from the MySQL DB System Information page; it will look like `10.0.1.xxx`.
 
@@ -120,7 +120,7 @@ Copy the private IP address from the MySQL DB System Information page; it will l
 
 Connect with Cloud Shell (if you close it or it is no longer active).
 
-![](./images/cloud_shell.png)
+![](images/cloud_shell.png)
 
 SSH into the bastion host:
 
@@ -148,7 +148,7 @@ R2d2&C3po!
 
 If there is no error on the console, everything is ready to proceed.
 
-![Create Schema Terminal](./images/create_schema_mysql_terminal.png)
+![Create Schema Terminal](images/create_schema_mysql_terminal.png)
 
 ## Enable HeatWave
 

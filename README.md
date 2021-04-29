@@ -1,10 +1,10 @@
 # MySQL, Data Integration and Data Science Workshop
 
-![Oracle Workshop](./images/banner.png)
+![Oracle Workshop](images/banner.png)
 
 ## Conversational Approach to Your Applications
 
-This workshop walks you through the steps to use **MySQL Database System**, **Data Integration** and **Data Science** to extract from a CSV dataset, apply some transformations, load the data into MySQL (with HeatWave Analytics Engine) and run a data science Jupyter Notebook.
+This workshop walks you through the steps to use **MySQL Database System**, **Data Integration** and **Data Science** to extract data from a CSV dataset, apply some transformations, load the data into MySQL (with HeatWave Analytics Engine) and run a data science Jupyter Notebook.
 
 ## Who Should Do This Workshop
 
