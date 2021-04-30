@@ -152,7 +152,27 @@ If there is no error on the console, everything is ready to proceed.
 
 ## Enable HeatWave
 
-XXX
+If you have select the HeatWave Shape `MySQL.HeatWave.VM.Standard.E3`, you should be able to enable HeatWave Analytics Engine.
+
+Go to the **Resources Menu** > **HeatWave**.
+
+![](images/mds_heatwave_menu.png)
+
+Your HeatWave is disabled, add the HeatWave Cluster. Click **Add HeatWave Cluster**.
+
+![](images/mds_heatwave_add_cluster.png)
+
+Check the values, and click **Add HeatWave Cluster**.
+
+![](images/mds_heatwave_select_shape.png)
+
+Wait for the Cluster to be created.
+
+![](images/mds_heatwave_creating.png)
+
+HeatWave will be `Active` and the cluster nodes will be as well in `Active` state.
+
+![](images/mds_heatwave_active.png)
 
 ## Congratulations! You are ready to go to the next Lab!
 

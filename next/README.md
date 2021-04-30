@@ -7,6 +7,7 @@
 ## Troubleshooting
 
 ---
+
 Lab 2: Running MySQL docker image:
 
 ```
@@ -16,6 +17,20 @@ docker: Error response from daemon: Conflict. The container name "/mysql" is alr
 > Run the following command and try again
 > 
 > `sudo docker stop mysql`
+
+---
+
+Lab 2: Enable HeatWave:
+
+Error: `attribute = {heatWaveCluster.shapeFamily}, value = {MySQL.HeatWave.VM.Standard.E3} - for this cluster shape the MySQL instance shape must be the same`
+
+![](images/heatwave_error_shape.png)
+
+> You need to use HeatWave Shape when you created MySQL Database System.
+> 
+> Terminate your current MySQL Instance and create a new one with HeatWave valid shape, for example: `MySQL.HeatWave.VM.Standard.E3`.
+> 
+> Enable HeatWave should work with the new shape.
 
 ---
 
