@@ -286,7 +286,7 @@ sudo docker pull mysql/mysql-server
 
 ## Create Object Storage and upload files
 
-Go to **Menu** > **Object Storage** > **Object Storage**.
+Go to **Menu** > **Storage** > **Buckets**.
 
 ![Object Storage Menu](images/os_menu.png)
 

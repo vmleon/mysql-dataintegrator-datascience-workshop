@@ -60,7 +60,7 @@ allow service dataintegration to use virtual-network-family in tenancy
 > allow group <group-name> to manage tag-namespaces in compartment <compartment-name>
 > ```
 
-Go to **Menu** > **Data Integration**.
+Go to **Menu** > **Analytics & AI** > **Data Integration**.
 
 ![](images/di_menu.png)
 
@@ -102,7 +102,7 @@ Then click **Copy OCID**.
 
 Go to **Identity** > **Policies**. We are going to add new policies for our new Workspace.
 
-![](images/di_workspace_policies_menu.png)
+![](images/identity_policies_menu.png)
 
 Click on the `dataintegration` policy name.
 
@@ -134,9 +134,9 @@ Click **Save Changes**.
 
 ![](images/di_policy_save_changes.png)
 
-Come back to Data Integration, Click **Menu** > **Data Integration**.
+Come back to Data Integration, Click **Menu** > **Analytics & AI** > **Data Integration**.
 
-![](images/di_back_to_data_integration.png)
+![](images/di_menu.png)
 
 Check the Data Integration Workspace is `Active` and click the link.
 
@@ -191,7 +191,7 @@ Let's create the Data Asset now.
 
 Go back to Your Data Integration Workspace:
 
-Go to **Menu** > **Data Integration**:
+Go to **Menu** > **Analytics & AI** > **Data Integration**:
 
 ![](images/di_menu.png)
 

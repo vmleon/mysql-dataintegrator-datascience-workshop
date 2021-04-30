@@ -6,7 +6,7 @@
 
 ## Create an instance of MySQL in the cloud
 
-Go to **Menu** > **MySQL** > **DB Systems**.
+Go to **Menu** > **Databases** > **DB Systems**.
 
 ![](images/mysql_menu.png)
 

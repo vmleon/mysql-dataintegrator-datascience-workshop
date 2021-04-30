@@ -6,7 +6,7 @@
 
 ## Create Policies
 
-Create Dynamic Group, go to **Menu** > **Identity** > **Dynamic Groups**.
+Create Dynamic Group, go to **Menu** > **Identity & Security** > **Dynamic Groups**.
 
 ![](images/ds_dynamic_group_menu.png)
 
@@ -43,9 +43,9 @@ The Dynamic Group for Data Science has been created.
 
 Create Policies for Data Science:
 
-Go to **Menu** > **Identity** > **Policies**.
+Go to **Menu** > **Identity & Security** > **Policies**.
 
-![](images/ds_policies_menu.png)
+![](images/identity_policies_menu.png)
 
 Click **Create Policy**.
 
@@ -94,7 +94,7 @@ The Policy for Data Science has been created.
 
 ## Create a Data Science Project
 
-Go to **Menu** > **Data Science** > **Projects**.
+Go to **Menu** > **Analytics & AI** > **Data Science**.
 
 ![](images/ds_menu.png)
 
