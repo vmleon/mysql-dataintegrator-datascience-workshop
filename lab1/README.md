@@ -242,44 +242,24 @@ Update your Linux (it might take few minutes):
 sudo yum update -y
 ```
 
-Install Docker:
+Install MYSQL Shell with the following commands:
 
 ```bash
-sudo yum install docker-engine -y
+wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
 ```
 
-Start Docker Engine:
-
 ```
-sudo systemctl start docker
+sudo yum localinstall mysql80-community-release-el7-3.noarch.rpm
 ```
 
-Check that docker is running:
-
 ```
-sudo systemctl status docker
+sudo yum install mysql-shell mysql-community-client -y
 ```
 
-![Docker Service Active](images/docker_service_active.png)
-
-If `active`, then enable Docker as a service.
+Let's check the version of MySQL Shell:
 
 ```
-sudo systemctl enable docker
-```
-
- Optional, if you don't want to use `sudo` with every `docker` command:
->
-> ```
-> sudo usermod -aG docker $USER
-> ```
-> 
-> For the changes to take place, you need to `exit` and then `ssh` into the bastion host again
-
-Let's pull MySQL as a docker container:
-
-```
-sudo docker pull mysql/mysql-server
+mysqlsh --version
 ```
 
 ---

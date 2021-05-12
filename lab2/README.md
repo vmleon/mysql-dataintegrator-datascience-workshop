@@ -128,16 +128,9 @@ SSH into the bastion host:
 ssh -i ~/.ssh/bastion opc@PUBLIC_IP
 ```
 
-Run a docker image with MySQL Shell:
-
+Run MySQL Shell (repalce `PRIVATE_IP` with your MDS IP value):
 ```
-sudo docker run -it --rm --name mysql mysql/mysql-server bash
-```
-
-When in the docker container, replace `PRIVATE_IP` with the correct MySQL Private IP and run the command:
-
-```
-curl https://raw.githubusercontent.com/vmleon/mysql-dataintegrator-datascience-workshop/main/lab2/files/create_fish_survey.sql | mysqlsh --sql root@PRIVATE_IP
+curl https://raw.githubusercontent.com/vmleon/mysql-dataintegrator-datascience-workshop/main/lab2/files/create_fish_survey.sql | mysqlsh --sql root@10.0.1.112
 ```
 
 It will ask for the password (`Please provide the password for 'root@PRIVATE_IP':`). Type the MySQL DB password:
