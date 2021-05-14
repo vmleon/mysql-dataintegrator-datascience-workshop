@@ -1,11 +1,10 @@
-# Lab 2: Create MySQL Database System
+# Create MySQL Database System
 
 ![MySQL Database System](images/mds_banner.png)
 
-**MySQL Database System** is a fully-managed Oracle Cloud Infrastructure service, developed, managed, and supported by the MySQL team in Oracle.
-
 ## Introduction
-### Objectives
+
+**MySQL Database System** is a fully-managed Oracle Cloud Infrastructure service, developed, managed, and supported by the MySQL team in Oracle.
 
 ## STEP 1: Create an instance of MySQL in the cloud
 

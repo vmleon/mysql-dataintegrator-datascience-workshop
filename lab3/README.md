@@ -1,14 +1,12 @@
-# Lab 3: Create Data Integration Instance
+# Create Data Integration Instance
 
 ![Data Integration](images/ocidi_banner.png)
+
+## Introduction
 
 This Lab walks you through the steps to get started using **Data Integration** on Oracle Cloud Infrastructure (OCI). You will provision a new instance in just a few minutes.
 
 OCI Data Integration is a fully managed, serverless, native cloud service that helps you with common extract, load, and transform (ETL) tasks such as ingesting data from different sources, cleansing, transforming, and reshaping that data, and then efficiently loading it to target data sources on OCI.
-
-
-## Introduction
-### Objectives
 
 ## STEP 1: Create Your OCI Data Integration Instance
 

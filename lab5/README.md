@@ -2,11 +2,9 @@
 
 ![Data Science](images/ds_banner.jpg)
 
-**Oracle Data Science**: Build high-quality models faster and easier. Automated machine learning capabilities rapidly examine the data and recommend the optimal data features and best algorithms. Additionally, automated machine learning tunes the model and explains the model’s results.
-
-
 ## Introduction
-### Objectives
+
+**Oracle Data Science**: Build high-quality models faster and easier. Automated machine learning capabilities rapidly examine the data and recommend the optimal data features and best algorithms. Additionally, automated machine learning tunes the model and explains the model’s results.
 
 ## STEP 1: Create Policies
 

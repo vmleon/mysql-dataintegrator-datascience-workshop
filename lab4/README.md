@@ -1,6 +1,8 @@
-# Lab 4: Design and Run your ETL Pipeline.
+# Design and Run your ETL Pipeline.
 
 ![DI Pipeline](images/pipeline_banner.jpeg)
+
+## Introduction
 
 A data flow is a visual program representing the flow of data from source data assets, such as a database or flat file, to target data assets, such as a data lake or data warehouse.
 
@@ -8,7 +10,6 @@ The flow of data from source to target can undergo a series of transforms to agg
 
 Data engineers and ETL developers can then analyze or gather insights and use that data to make business decisions.
 
-## Introduction
 ### Objectives
 
 ## STEP 1: Create the Data Flow
@@ -209,32 +210,24 @@ Data engineers and ETL developers can then analyze or gather insights and use th
 1. On the bastion host in Cloud Shell (reconnect if timed out), run the MySQL docker image and in the `bash` Terminal, run:
 
     ```
-    mysqlsh root@PRIVATE_IP
+    mysqlsh --sql root@PRIVATE_IP
     ```
 
 2. Put the MySQL password: `R2d2&C3po!`
 
-3. Run a query to check the number of rows in the `fish` table. And this is how:
-
-    Change to SQL mode:
-
-    ```
-    \sql
-    ```
-
-4. Set `nature` as the Schema in use.
+3. Set `nature` as the Schema in use.
 
     ```
     use nature;
     ```
 
-5. Count the number of rows in the table `fish`.
+4. Count the number of rows in the table `fish`.
 
     ```sql
     select count(1) from fish;
     ```
 
-6. Exit with:
+5. Exit with:
 
     ```
     \exit
