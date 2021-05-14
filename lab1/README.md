@@ -1,20 +1,23 @@
-# Lab 1: Requirements
+# Requirements
 
 ![Requirements](images/requirements.png)
 
-## Create Virtual Cloud Network (VCN)
+## Introduction
+### Objectives
 
-We are going to create a network with a public subnet (with access from the Internet) and a private subnet (no direct access from the Internet).
+## STEP 1: Create Virtual Cloud Network (VCN)
 
-This network layout is interesting to protect those services that don't need to be exposed to the Internet (living in the Private subnet) meanwhile other services and virtual machines with direct access from the internet, like Bastion hosts or Web Servers (living in the Public Subnet).
+1. We are going to create a network with a public subnet (with access from the Internet) and a private subnet (no direct access from the Internet).
 
-Go to **Menu** > **Networking** > **Virtual Cloud Networks**.
+    This network layout is interesting to protect those services that don't need to be exposed to the Internet (living in the Private subnet) meanwhile other services and virtual machines with direct access from the internet, like Bastion hosts or Web Servers (living in the Public Subnet).
 
-![VCN menu](images/vcn_menu.png)
+2. Go to **Menu** > **Networking** > **Virtual Cloud Networks**.
 
->Note: If you have not picked a compartment, pick the **root** compartment for this Lab.
-> 
-> ![Pick Compartment](images/pick_compartment.png)
+    ![VCN menu](images/vcn_menu.png)
+
+    >Note: If you have not picked a compartment, pick the **root** compartment for this Lab.
+    > 
+    > ![Pick Compartment](images/pick_compartment.png)
 
 Click **Start VCN Wizard**.
 

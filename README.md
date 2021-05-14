@@ -14,6 +14,8 @@ You want to **learn Oracle Cloud Infrastructure**.
 
 You want to explore **Oracle Cloud and its Free Tier**.
 
+Estimated Workshop Time: 120 minutes.
+
 ## Content
 
 [Get Started: Sign Up for your Oracle Cloud Free Tier](lab0/README.md)

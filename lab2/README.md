@@ -4,107 +4,102 @@
 
 **MySQL Database System** is a fully-managed Oracle Cloud Infrastructure service, developed, managed, and supported by the MySQL team in Oracle.
 
-## Create an instance of MySQL in the cloud
+## Introduction
+### Objectives
 
-Go to **Menu** > **Databases** > **DB Systems**.
+## STEP 1: Create an instance of MySQL in the cloud
 
-![](images/mysql_menu.png)
+1. Go to **Menu** > **Databases** > **DB Systems**.
 
-Click **Create MySQL DB System**.
+    ![](images/mysql_menu.png)
 
-Make sure your root compartment (or the one you want) is selected.
+2. Click **Create MySQL DB System**.
 
-![](images/mysql_create_button.png)
+    Make sure your root compartment (or the one you want) is selected.
 
-- Name your MySQL instance: `mysql-analytics`
+    ![](images/mysql_create_button.png)
 
-- Description (optional): `MySQL instance for Analytics`
+    - Name your MySQL instance: `mysql-analytics`
+    - Description (optional): `MySQL instance for Analytics`
 
-Between the three options, pick `HeatWave`. `Standalone` will work for the test, but it doesn't include the Analytics Engine that will improve performance for Analytics.
+    Between the three options, pick `HeatWave`. `Standalone` will work for the test, but it doesn't include the Analytics Engine that will improve performance for Analytics.
 
-For Username and password:
+    For Username and password:
 
-- Username: `root`
+    - Username: `root`
+    - Password: `R2d2&C3po!`
+    - Confirm Password: `R2d2&C3po!`
 
-- Password: `R2d2&C3po!`
+    ![](images/mysql_create_db_fields.png)
 
-- Confirm Password: `R2d2&C3po!`
+3. Network configuration:
 
-![](images/mysql_create_db_fields.png)
+    - Virtual Cloud Network: `nature`
+    - Subnet: `Private Subnet-nature (Regional)`
 
-Network configuration:
+    ![](images/mysql_vcn_fields.png)
 
-- Virtual Cloud Network: `nature`
+4. Everything else is good by default:
 
-- Subnet: `Private Subnet-nature (Regional)`
+    - Configure placement: `AD-1`
+    - Configure hardware: `MySQL.HeatWave.VM.Standard.E3` or Standalone (selected above) `MySQL.VM.Standard.E3.1.8GB`
+    - Data Storage Size (GB): `50`
+    - Configure Backups: `Enable Automatic Backups`
 
-![](images/mysql_vcn_fields.png)
+5. Click **Create**.
 
-Everything else is good by default:
+    ![](images/mysql_shape_fields.png)
 
-- Configure placement: `AD-1`
+    The provisioning is around 10 minutes. The icon should change to `ACTIVE` in green:
 
-- Configure hardware: `MySQL.HeatWave.VM.Standard.E3` or Standalone (selected above) `MySQL.VM.Standard.E3.1.8GB`
+    ![Provisioning](images/mds-provisioning.png)
 
-- Data Storage Size (GB): `50`
+    ![Active](images/mds-active.png)
 
-- Configure Backups: `Enable Automatic Backups`
+6. Copy the private IP address from the MySQL DB System Information page; it will look like `10.0.1.xxx`.
 
-Click **Create**.
+    ![](images/mysql_private_ip.png)
 
-![](images/mysql_shape_fields.png)
+## STEP 2: Connect and create DB
 
-The provisioning is around 10 minutes. The icon should change to `ACTIVE` in green:
+1. Connect with Cloud Shell (if you close it or it is no longer active).
 
-![Provisioning](images/mds-provisioning.png)
+    ![](images/cloud_shell.png)
 
-![Active](images/mds-active.png)
+    - SSH into the bastion host: `ssh -i ~/.ssh/bastion opc@PUBLIC_IP`
+    - Run MySQL Shell (repalce `PRIVATE_IP` with your MDS IP value): `curl https://raw.githubusercontent.com/vmleon/mysql-dataintegrator-datascience-workshop/main/lab2/files/create_fish_survey.sql | mysqlsh --sql root@10.0.1.112`
 
-Copy the private IP address from the MySQL DB System Information page; it will look like `10.0.1.xxx`.
+    It will ask for the password (`Please provide the password for 'root@PRIVATE_IP':`). 
 
-![](images/mysql_private_ip.png)
+    - Type the MySQL DB password: `R2d2&C3po!`
 
-## Connect and create DB
+    If there is no error on the console, everything is ready to proceed.
 
-Connect with Cloud Shell (if you close it or it is no longer active).
+    ![Create Schema Terminal](images/create_schema_mysql_terminal.png)
 
-![](images/cloud_shell.png)
+## STEP 3: Enable HeatWave
 
-- SSH into the bastion host: `ssh -i ~/.ssh/bastion opc@PUBLIC_IP`
+1. If you have select the HeatWave Shape `MySQL.HeatWave.VM.Standard.E3`, you should be able to enable HeatWave Analytics Engine.
 
-- Run MySQL Shell (repalce `PRIVATE_IP` with your MDS IP value): `curl https://raw.githubusercontent.com/vmleon/mysql-dataintegrator-datascience-workshop/main/lab2/files/create_fish_survey.sql | mysqlsh --sql root@10.0.1.112`
+2. Go to the **Resources Menu** > **HeatWave**.
 
-It will ask for the password (`Please provide the password for 'root@PRIVATE_IP':`). 
+    ![](images/mds_heatwave_menu.png)
 
-- Type the MySQL DB password: `R2d2&C3po!`
+3. Your HeatWave is disabled, add the HeatWave Cluster. Click **Add HeatWave Cluster**.
 
-If there is no error on the console, everything is ready to proceed.
+    ![](images/mds_heatwave_add_cluster.png)
 
-![Create Schema Terminal](images/create_schema_mysql_terminal.png)
+4. Check the values, and click **Add HeatWave Cluster**.
 
-## Enable HeatWave
+    ![](images/mds_heatwave_select_shape.png)
 
-If you have select the HeatWave Shape `MySQL.HeatWave.VM.Standard.E3`, you should be able to enable HeatWave Analytics Engine.
+    Wait for the Cluster to be created.
 
-Go to the **Resources Menu** > **HeatWave**.
+    ![](images/mds_heatwave_creating.png)
 
-![](images/mds_heatwave_menu.png)
+5. HeatWave will be `Active` and the cluster nodes will be as well in `Active` state.
 
-Your HeatWave is disabled, add the HeatWave Cluster. Click **Add HeatWave Cluster**.
-
-![](images/mds_heatwave_add_cluster.png)
-
-Check the values, and click **Add HeatWave Cluster**.
-
-![](images/mds_heatwave_select_shape.png)
-
-Wait for the Cluster to be created.
-
-![](images/mds_heatwave_creating.png)
-
-HeatWave will be `Active` and the cluster nodes will be as well in `Active` state.
-
-![](images/mds_heatwave_active.png)
+    ![](images/mds_heatwave_active.png)
 
 ## Congratulations! You are ready to go to the next Lab!
 

@@ -4,185 +4,178 @@
 
 **Oracle Data Science**: Build high-quality models faster and easier. Automated machine learning capabilities rapidly examine the data and recommend the optimal data features and best algorithms. Additionally, automated machine learning tunes the model and explains the model’s results.
 
-## Create Policies
 
-Create Dynamic Group, go to **Menu** > **Identity & Security** > **Dynamic Groups**.
+## Introduction
+### Objectives
 
-![](images/ds_dynamic_group_menu.png)
+## STEP 1: Create Policies
 
-Click **Create Dynamic Group**.
+1. Create Dynamic Group, go to **Menu** > **Identity & Security** > **Dynamic Groups**.
 
-![](images/ds_dynamic_group_create_button.png)
+  ![](images/ds_dynamic_group_menu.png)
 
-Set the following values:
+2. Click **Create Dynamic Group**.
 
-- Name: `datascience`
+  ![](images/ds_dynamic_group_create_button.png)
 
-- Description: `Data Science Dynamic Group`
+3. Set the following values:
 
-- Rule 1 (Matching Rules): `ALL { resource.type = 'datasciencenotebooksession' }`
+  - Name: `datascience`
+  - Description: `Data Science Dynamic Group`
+  - Rule 1 (Matching Rules): `ALL { resource.type = 'datasciencenotebooksession' }`
+4. Click **Create**.
 
-Click **Create**.
+  ![](images/ds_dynamic_group_create.png)
 
-![](images/ds_dynamic_group_create.png)
+5. The Dynamic Group for Data Science has been created.
 
-The Dynamic Group for Data Science has been created.
-
-![](images/ds_dynamic_group_review.png)
+  ![](images/ds_dynamic_group_review.png)
 
 ---
 
-Create Policies for Data Science:
+## STEP 2: Create Policies for Data Science
 
-Go to **Menu** > **Identity & Security** > **Policies**.
+1. Go to **Menu** > **Identity & Security** > **Policies**.
 
-![](images/identity_policies_menu.png)
+  ![](images/identity_policies_menu.png)
 
-Click **Create Policy**.
+2. Click **Create Policy**.
 
-Make sure you are in the `root` compartment.
+  Make sure you are in the `root` compartment.
 
-![](images/ds_policies_create_button.png)
+  ![](images/ds_policies_create_button.png)
 
-Use the following information:
+3. Use the following information:
 
-- Name: `datascience`
-
-- Description: `Data Science to use network resources`
-
-- Policy Builder: 
+  - Name: `datascience`
+  - Description: `Data Science to use network resources`
+  - Policy Builder: 
   - Toggle **Show manual editor**
-  - `allow service datascience to use virtual-network-family in tenancy`
-  - `allow dynamic-group datascience to manage data-science-family in tenancy`
+    - `allow service datascience to use virtual-network-family in tenancy`
+    - `allow dynamic-group datascience to manage data-science-family in tenancy`
 
-Click **Create**.
+4. Click **Create**.
 
-![](images/ds_policies_create.png)
+  ![](images/ds_policies_create.png)
 
-The Policy for Data Science has been created.
+5. The Policy for Data Science has been created.
 
-![](images/ds_policies_create_review.png)
+  ![](images/ds_policies_create_review.png)
 
->Note:  If you have created an Oracle Cloud Account to do the workshop, you are already the Administrator. You DO NOT NEED TO DO THIS STEP.
-> 
-> In case you are a Non-admin user, you will need to set up some more policies to allow the group you belong to. Ask your administrator.
-> 
-> - `allow group <data-scientists> to use virtual-network-family in tenancy`
-> - `allow group <data-scientists> to manage data-science-family in tenancy`
-
----
-
-## Create a Data Science Project
-
-Go to **Menu** > **Analytics & AI** > **Data Science**.
-
-![](images/ds_menu.png)
-
-Click **Create Project**.
-
-![](images/ds_create_project_button.png)
-
-Set the name and description as follows:
-
-- Name: `Nature`
-
-- Description: `Fish Survey notebook`
-
-Click **Create**.
-
-![](images/ds_create_project.png)
-
-The next step is to create a Notebook, click **Create Notebook Session**.
-
-![](images/ds_create_notebook.png)
-
-Set the following values:
-
-- Name: `Fish Survey`
-
-- Compute Instance Shape (but other compatible shapes would work as well): `VM.Standard.E2.2`
-
-- Block Storage Size: `50`
-
-- VCN: `nature`
-
-- Subnet: `Private Subnet-nature`
-
-Click **Create**.
-
-![](images/ds_create_notebook_create.png)
-
-The status icon will change from Creating to Active:
-
-![Creating](images/datascience-creating.png)
-
-![Active](images/datascience-active.png)
-
-When the Notebook is active, click **Open**.
-
-![](images/ds_create_notebook_open.png)
-
-Log-in into your Notebook. Click **Continue** and you should be in your notebook as you are using your same OCI Web Console user. Otherwise, log in with your specific user.
-
-![](images/ds_notebook_login.png)
+  >Note:  If you have created an Oracle Cloud Account to do the workshop, you are already the Administrator. You DO NOT NEED TO DO THIS STEP.
+  > 
+  > In case you are a Non-admin user, you will need to set up some more policies to allow the group you belong to. Ask your administrator.
+  > 
+  > - `allow group <data-scientists> to use virtual-network-family in tenancy`
+  > - `allow group <data-scientists> to manage data-science-family in tenancy`
 
 ---
 
-## Install libraries
+## STEP 3: Create a Data Science Project
 
-Welcome to your Jupyter Notebook, click **Terminal**.
+1. Go to **Menu** > **Analytics & AI** > **Data Science**.
 
-![](images/ds_notebook_terminal.png)
+  ![](images/ds_menu.png)
 
+2. Click **Create Project**.
 
-And type the following command:
+  ![](images/ds_create_project_button.png)
 
-```
-pip install mysql-connector-python pandas seaborn
-```
+3. Set the name and description as follows:
 
-![](images/ds_notebook_terminal_install.png)
+  - Name: `Nature`
+  - Description: `Fish Survey notebook`
 
-Wait for the installation to complete.
+4. Click **Create**.
+
+  ![](images/ds_create_project.png)
+
+5. The next step is to create a Notebook, click **Create Notebook Session**.
+
+  ![](images/ds_create_notebook.png)
+
+6. Set the following values:
+
+  - Name: `Fish Survey`
+  - Compute Instance Shape (but other compatible shapes would work as well): `VM.Standard.E2.2`
+  - Block Storage Size: `50`
+  - VCN: `nature`
+  - Subnet: `Private Subnet-nature`
+
+7. Click **Create**.
+
+  ![](images/ds_create_notebook_create.png)
+
+8. The status icon will change from Creating to Active:
+
+  ![Creating](images/datascience-creating.png)
+
+  ![Active](images/datascience-active.png)
+
+9. When the Notebook is active, click **Open**.
+
+  ![](images/ds_create_notebook_open.png)
+
+10. Log-in into your Notebook. Click **Continue** and you should be in your notebook as you are using your same OCI Web Console user. Otherwise, log in with your specific user.
+
+  ![](images/ds_notebook_login.png)
 
 ---
 
-## Create Jupyter Notebook environment
+## STEP 4: Install libraries
 
-Download the Notebook [here](https://raw.githubusercontent.com/vmleon/mysql-dataintegrator-datascience-workshop/main/lab5/files/FishSurvey.ipynb).
+1. Welcome to your Jupyter Notebook, click **Terminal**.
 
-Click **Upload files**.
+  ![](images/ds_notebook_terminal.png)
 
-![](images/ds_notebook_upload.png)
+2. Type the following command:
 
-Select `FishSurvey.ipynb` from your disk. Wait for the upload to complete.
+  ```
+  pip install mysql-connector-python pandas seaborn
+  ```
 
-Your `FishSurvey.ipynb` will be loaded on the side panel.
+  ![](images/ds_notebook_terminal_install.png)
 
-![](images/ds_notebook_fish_notebook.png)
+3. Wait for the installation to complete.
 
-Double click on **FishSurvey.ipynb**.
+  ---
 
-Make sure you modify `PRIVATE_IP` on the following code in the Notebook with the Private IP from your MySQL Database System.
+## STEP 5: Create Jupyter Notebook environment
 
-```
-cnx = mysql.connector.connect(
-  host="PRIVATE_IP",
-  user="root",
-  passwd="R2d2&C3po!",
-  database="nature"
-)
-```
+1. Download the Notebook [here](https://raw.githubusercontent.com/vmleon/mysql-dataintegrator-datascience-workshop/main/lab5/files/FishSurvey.ipynb).
 
-![](images/ds_notebook_fish_notebook_run.png)
+2. Click **Upload files**.
 
-Select the rest paragraph (called Cell) of the Notebook and run the Notebook cell by cell by clicking the **play** icon over and over until you reach the end.
+  ![](images/ds_notebook_upload.png)
 
-![](images/ds_notebook_fish_notebook_head.png)
+3. Select `FishSurvey.ipynb` from your disk. Wait for the upload to complete.
 
-Check the plot.
+4. Your `FishSurvey.ipynb` will be loaded on the side panel.
 
-![](images/ds_notebook_fish_notebook_plot.png)
+  ![](images/ds_notebook_fish_notebook.png)
+
+5. Double click on **FishSurvey.ipynb**.
+
+6. Make sure you modify `PRIVATE_IP` on the following code in the Notebook with the Private IP from your MySQL Database System.
+
+  ```
+  cnx = mysql.connector.connect(
+    host="PRIVATE_IP",
+    user="root",
+    passwd="R2d2&C3po!",
+    database="nature"
+  )
+  ```
+
+  ![](images/ds_notebook_fish_notebook_run.png)
+
+7. Select the rest paragraph (called Cell) of the Notebook and run the Notebook cell by cell by clicking the **play** icon over and over until you reach the end.
+
+  ![](images/ds_notebook_fish_notebook_head.png)
+
+8. Check the plot.
+
+  ![](images/ds_notebook_fish_notebook_plot.png)
 
 ## Congratulations! Well done!
 

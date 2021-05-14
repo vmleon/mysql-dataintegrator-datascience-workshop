@@ -6,264 +6,220 @@ This Lab walks you through the steps to get started using **Data Integration** o
 
 OCI Data Integration is a fully managed, serverless, native cloud service that helps you with common extract, load, and transform (ETL) tasks such as ingesting data from different sources, cleansing, transforming, and reshaping that data, and then efficiently loading it to target data sources on OCI.
 
-## Create Your OCI Data Integration Instance
 
-We need to create some policies to allow the Data Integration service to use other services within OCI.
+## Introduction
+### Objectives
 
-Go to **Identity** > **Policies**.
+## STEP 1: Create Your OCI Data Integration Instance
 
-![Identity Policy Menu](images/identity_policies_menu.png)
+1. We need to create some policies to allow the Data Integration service to use other services within OCI.
 
-Click **Create Policy**.
+2. Go to **Identity** > **Policies**.
 
-Make sure you are in the `root` compartment.
+    ![Identity Policy Menu](images/identity_policies_menu.png)
 
-![Create Policy](images/identity_create_policy.png)
+3. Click **Create Policy**.
 
-Create a new policy
+    Make sure you are in the `root` compartment.
 
-Name: 
+    ![Create Policy](images/identity_create_policy.png)
 
-```
-dataintegration
-```
+4. Create a new policy:
 
-Description: 
+    - Name: `dataintegration`
+    - Description: `Allow Data Integration Service to use VCN`
+    - Toggle: `Show manual editor`
+    - Policy Builder: `allow service dataintegration to use virtual-network-family in tenancy`
 
-```
-Allow Data Integration Service to use VCN
-```
-
-Toggle: 
-
-```
-Show manual editor
-```
-
-Policy Builder: 
-
-```
-allow service dataintegration to use virtual-network-family in tenancy
-```
-
-![Policy fields for DI](images/identity_policy_fields.png)
+    ![Policy fields for DI](images/identity_policy_fields.png)
 
 
-> If you have created an Oracle Cloud Account to do the workshop, you are already the Administrator. You DO NOT NEED TO DO THIS STEP.
-> 
-> In case you are a Non-admin user, you will need to set up some more policies to allow the group you belong to. Ask your administrator.
-> 
-> ```
-> allow group <group-name> to manage dis-workspaces in compartment <compartment-name>
-> allow group <group-name> to manage dis-work-requests in compartment <compartment-name>
-> allow group <group-name> to use virtual-network-family in compartment <compartment-name>
-> allow group <group-name> to manage tag-namespaces in compartment <compartment-name>
-> ```
+    >Note: If you have created an Oracle Cloud Account to do the workshop, you are already the Administrator. You DO NOT NEED TO DO THIS STEP.
+    > 
+    > In case you are a Non-admin user, you will need to set up some more policies to allow the group you belong to. Ask your administrator.
+    > 
+    > ```
+    > allow group <group-name> to manage dis-workspaces in compartment <compartment-name>
+    > allow group <group-name> to manage dis-work-requests in compartment <compartment-name>
+    > allow group <group-name> to use virtual-network-family in compartment <compartment-name>
+    > allow group <group-name> to manage tag-namespaces in compartment <compartment-name>
+    > ```
 
-Go to **Menu** > **Analytics & AI** > **Data Integration**.
+5. Go to **Menu** > **Analytics & AI** > **Data Integration**.
 
-![](images/di_menu.png)
+    ![](images/di_menu.png)
 
-Click **Create Workspace**.
+6. Click **Create Workspace**.
 
-![](images/di_create_workshop_button.png)
+    ![](images/di_create_workshop_button.png)
 
-Modify the following fields, leave the rest as default:
+7. Modify the following fields, leave the rest as default:
 
-Name: 
+    - Name: `Workspace Nature`
+    - VCN: `nature`
+    - Subnet: `Private subnet-nature`
 
-```
-Workspace Nature
-```
+8. Click **Create**.
 
-VCN: 
+    ![](images/di_create_workshop.png)
 
-```
-nature
-```
+9. While the Workspace is created, click the three dots contextual menu.
 
-Subnet: 
+    ![](images/di_creating.png)
 
-```
-Private subnet-nature
-```
+10. Then click **Copy OCID**.
 
-Click **Create**.
+    ![](images/di_ocid.png)
 
-![](images/di_create_workshop.png)
+11. Go to **Identity** > **Policies**. We are going to add new policies for our new Workspace.
 
-While the Workspace is created, click the three dots contextual menu.
+    ![](images/identity_policies_menu.png)
 
-![](images/di_creating.png)
+12. Click on the `dataintegration` policy name.
 
-Then click **Copy OCID**.
+    ![](images/di_policy_link.png)
 
-![](images/di_ocid.png)
+13. Click **Edit Policy Statements**.
 
-Go to **Identity** > **Policies**. We are going to add new policies for our new Workspace.
+    ![](images/di_policy_edit_button.png)
 
-![](images/identity_policies_menu.png)
+14. Click **+ Another Statement**.
 
-Click on the `dataintegration` policy name.
+    ![](images/di_policy_add_policy.png)
 
-![](images/di_policy_link.png)
+15. Add two more statements and make sure you replace `DATA_INTEGRATION_WORKSPACE_OCID` with the Workspace OCID: 
 
-Click **Edit Policy Statements**.
+    - The first statement: `allow any-user to use buckets in tenancy where ALL {request.principal.type='disworkspace', request.principal.id='DATA_INTEGRATION_WORKSPACE_OCID'}`
+    - The second statement: `allow any-user to manage objects in tenancy where ALL {request.principal.type='disworkspace',request.principal.id='DATA_INTEGRATION_WORKSPACE_OCID'}`
 
-![](images/di_policy_edit_button.png)
+16. Click **Save Changes**.
 
-Click **+ Another Statement**.
+    ![](images/di_policy_save_changes.png)
 
-![](images/di_policy_add_policy.png)
+17. Come back to Data Integration, Click **Menu** > **Analytics & AI** > **Data Integration**.
 
-Add two more statements and make sure you replace `DATA_INTEGRATION_WORKSPACE_OCID` with the Workspace OCID: 
+    ![](images/di_menu.png)
 
-- The first statement: `allow any-user to use buckets in tenancy where ALL {request.principal.type='disworkspace', request.principal.id='DATA_INTEGRATION_WORKSPACE_OCID'}`
+18. Check the Data Integration Workspace is `Active` and click the link.
 
-- The second statement: `allow any-user to manage objects in tenancy where ALL {request.principal.type='disworkspace',request.principal.id='DATA_INTEGRATION_WORKSPACE_OCID'}`
+    ![](images/di_active_go_to_workspace.png)
 
-Click **Save Changes**.
-
-![](images/di_policy_save_changes.png)
-
-Come back to Data Integration, Click **Menu** > **Analytics & AI** > **Data Integration**.
-
-![](images/di_menu.png)
-
-Check the Data Integration Workspace is `Active` and click the link.
-
-![](images/di_active_go_to_workspace.png)
-
-## Create the Data Assets
+## STEP 2: Create the Data Assets
 
 We are going to need the Object Storage URL and Tenancy ID.
 
-### Keep the Object Storage URL at hand
+1. ### Keep the Object Storage URL at hand
 
-You have this URL from Lab number 1. The URL depends on the region you are doing the workshop.
+    You have this URL from Lab number 1. The URL depends on the region you are doing the workshop.
 
-Some examples for different URLs depending on the region are, check yours:
+    Some examples for different URLs depending on the region are, check yours:
 
-| Region    | Object Storage URL                                     |
-| --------- | ------------------------------------------------------ |
-| Frankfurt | `https://objectstorage.eu-frankfurt-1.oraclecloud.com` |
-| London    | `https://objectstorage.uk-london-1.oraclecloud.com`    |
-| Zurich    | `https://objectstorage.eu-zurich-1.oraclecloud.com`    |
-| Dubai     | `https://objectstorage.me-dubai-1.oraclecloud.com`     |
-| Jeddah    | `https://objectstorage.me-jeddah-1.oraclecloud.com`    |
-| Amsterdam | `https://objectstorage.eu-amsterdam-1.oraclecloud.com` |
-| Mumbai    | `https://objectstorage.ap-mumbai-1.oraclecloud.com`    |
-| Cardiff   | `https://objectstorage.uk-cardiff-1.oraclecloud.com`   |
-| Ashburn   | `https://objectstorage.us-ashburn-1.oraclecloud.com`   |
-| Phoenix   | `https://objectstorage.us-phoenix-1.oraclecloud.com`   |
-| Hyderabad | `https://objectstorage.ap-hyderabad-1.oraclecloud.com` |
+    | Region    | Object Storage URL                                     |
+    | --------- | ------------------------------------------------------ |
+    | Frankfurt | `https://objectstorage.eu-frankfurt-1.oraclecloud.com` |
+    | London    | `https://objectstorage.uk-london-1.oraclecloud.com`    |
+    | Zurich    | `https://objectstorage.eu-zurich-1.oraclecloud.com`    |
+    | Dubai     | `https://objectstorage.me-dubai-1.oraclecloud.com`     |
+    | Jeddah    | `https://objectstorage.me-jeddah-1.oraclecloud.com`    |
+    | Amsterdam | `https://objectstorage.eu-amsterdam-1.oraclecloud.com` |
+    | Mumbai    | `https://objectstorage.ap-mumbai-1.oraclecloud.com`    |
+    | Cardiff   | `https://objectstorage.uk-cardiff-1.oraclecloud.com`   |
+    | Ashburn   | `https://objectstorage.us-ashburn-1.oraclecloud.com`   |
+    | Phoenix   | `https://objectstorage.us-phoenix-1.oraclecloud.com`   |
+    | Hyderabad | `https://objectstorage.ap-hyderabad-1.oraclecloud.com` |
 
-Check for more in the Official documentation: [Object Storage Service API](https://docs.oracle.com/en-us/iaas/api/#/en/objectstorage/20160918/).
+    Check for more in the Official documentation: [Object Storage Service API](https://docs.oracle.com/en-us/iaas/api/#/en/objectstorage/20160918/).
 
-### Get Tenancy OCID
+2. ### Get Tenancy OCID
 
-Go to Profile on the top-right corner.
+    Go to Profile on the top-right corner.
 
-Click on Tenancy.
+    Click on Tenancy.
 
-![](images/profile_tenancy_menu.png)
+    ![](images/profile_tenancy_menu.png)
 
-Tenancy details contain a lot of interesting information, among others:
-- Your Home Region.
-- Your **CSI number** for creating support tickets.
-- Also, your **Object Storage Namespace**. 
+    Tenancy details contain a lot of interesting information, among others:
+    - Your Home Region.
+    - Your **CSI number** for creating support tickets.
+    - Also, your **Object Storage Namespace**. 
 
-At this point, we are interested in the Tenancy OCID. Copy the OCID by clicking on **Copy**. Write it down for the next step.
+    At this point, we are interested in the Tenancy OCID. Copy the OCID by clicking on **Copy**. Write it down for the next step.
 
-![](images/tenancy.png)
+    ![](images/tenancy.png)
 
->Note: You can see that the Object Storage Namespace is here, too, in case you need it in the future.
+    >Note: You can see that the Object Storage Namespace is here, too, in case you need it in the future.
 
-Let's create the Data Asset now.
+3. Let's create the Data Asset now. Go back to Your Data Integration Workspace.
+    
+    Go to **Menu** > **Analytics & AI** > **Data Integration**:
 
-Go back to Your Data Integration Workspace:
+    ![](images/di_menu.png)
 
-Go to **Menu** > **Analytics & AI** > **Data Integration**:
+4. Click on **Workspace Nature**.
 
-![](images/di_menu.png)
+    ![](images/di_workspace_enter.png)
 
-Click on **Workspace Nature**.
+    You can see that by default, there is a `Default Application` and a default project, `My First Project`.
 
-![](images/di_workspace_enter.png)
+    ![](images/di_home_page.png)
 
-You can see that by default, there is a `Default Application` and a default project, `My First Project`.
+    The first task is to create the data assets that represent the source and target for the data integration. In our case, the data source is an Object Storage bucket, and the target is our MySQL database.
 
-![](images/di_home_page.png)
+5. Click **Create Data Asset**.
 
-The first task is to create the data assets that represent the source and target for the data integration. In our case, the data source is an Object Storage bucket, and the target is our MySQL database.
+    ![](images/di_home_create_asset_bucket.png)
 
-Click **Create Data Asset**.
+6. Fill the fields as follows:
 
-![](images/di_home_create_asset_bucket.png)
+    - Name: `bucket-study`
+    - Description: `Object Storage Bucket with fish survey`
+    - Type: `Oracle Object Storage`
+    - URL: `https://objectstorage.<REGION>.oraclecloud.com`
+    - Tenancy OCID: `ocid1.tenancy.oc1..muahahahahahahahaha`
 
-Fill the fields as follows:
+7. Click outside the Tenancy OCID field, and after few seconds, and OS Namespace will be retrieved automatically.
 
-- Name: `bucket-study`
+    ![](images/dataasset_fields1.png)
 
-- Description: `Object Storage Bucket with fish survey`
+    You can test the connection.
 
-- Type: `Oracle Object Storage`
+    ![](images/dataasset_test_connection.png)
 
-- URL: `https://objectstorage.<REGION>.oraclecloud.com`
+8. After you get a successful test, click **Create**.
 
-- Tenancy OCID: `ocid1.tenancy.oc1..muahahahahahahahaha`
+    ![](images/dataasset_test_connection_success.png)
 
-Click outside the Tenancy OCID field, and after few seconds, and OS Namespace will be retrieved automatically.
+9. Go back to the Home Screen.
 
-![](images/dataasset_fields1.png)
+    ![](images/dataasset_os_back_home.png)
 
-You can test the connection.
+10. Click **Create Data Assets** again.
 
-![](images/dataasset_test_connection.png)
+    ![](images/dataasset_create_button.png)
 
-After you get a successful test, click **Create**.
+    This time we are going to create the MySQL database asset with the following values:
 
-![](images/dataasset_test_connection_success.png)
+    - Name: `mysql-database`
+    - Description: `MySQL Database for Analytics`
+    - Type: `MySQL`
+    - Host (from MySQL created instance): `10.0.1.x`
+    - Port: `3306`
+    - Database: `nature`
+    - User: `root`
+    - Password: `R2d2&C3po!`
+    ![](images/dataasset_mysql_fields1.png)
 
-Go back to the Home Screen.
+    ![](images/dataasset_mysql_fields2.png)
 
-![](images/dataasset_os_back_home.png)
+    You can test the connection.
 
-Click **Create Data Assets** again.
+11. Click **Create**.
 
-![](images/dataasset_create_button.png)
+    ![](images/dataasset_mysql_test_create.png)
 
-This time we are going to create the MySQL database asset with the following values:
+    When the data asset is created, go back to Home.
 
-- Name: `mysql-database`
-
-- Description: `MySQL Database for Analytics`
-
-- Type: `MySQL`
-
-- Host (from MySQL created instance): `10.0.1.x`
-
-- Port: `3306`
-
-- Database: `nature`
-
-- User: `root`
-
-- Password: `R2d2&C3po!`
-
-![](images/dataasset_mysql_fields1.png)
-
-![](images/dataasset_mysql_fields2.png)
-
-You can test the connection.
-
-Click **Create**.
-
-![](images/dataasset_mysql_test_create.png)
-
-When the data asset is created, go back to Home.
-
-![](images/dataasset_mysql_success_go_back_home.png)
+    ![](images/dataasset_mysql_success_go_back_home.png)
 
 ## It works
 
