@@ -12,7 +12,7 @@ Go to **Menu** > **Networking** > **Virtual Cloud Networks**.
 
 ![VCN menu](images/vcn_menu.png)
 
-> If you have not picked a compartment, pick the **root** compartment for this Lab.
+>Note: If you have not picked a compartment, pick the **root** compartment for this Lab.
 > 
 > ![Pick Compartment](images/pick_compartment.png)
 
@@ -28,10 +28,7 @@ Click **Start VCN Wizard**.
 
 Change the VCN name and leave everything else as default.
 
-VCN Name: 
-```
-nature
-```
+- VCN Name: `nature`
 
 Click **Next**.
 
@@ -64,20 +61,11 @@ Click **Add Ingress Rules**` and fill the form with the following information:
 
 We are adding an ingress rule on those ports from the internal VCN CIDR `10.0.0.0/16`.
 
-Source CIDR: 
-```
-10.0.0.0/16
-```
+- Source CIDR: `10.0.0.0/16`
 
-Destination Port Range: 
-```
-3306,33060
-```
+- Destination Port Range: `3306,33060`
 
-Description: 
-```
-MySQL and MySQL X Protocol
-```
+- Description: `MySQL and MySQL X Protocol`
 
 Leave the rest of the fields with default values.
 
@@ -103,43 +91,21 @@ Click **Create Instance**.
 
 ![Create Intance Button](images/compute_create_instance_button.png)
 
-Change the name to:
-
-```
-bastion
-```
+- Change the name to: `bastion`
 
 Make sure the rest of the properties are like the following:
 
-Image: 
-```
-Oracle Linux 7.9
-```
+- Image: `Oracle Linux 7.9`
 
-Shape for Always Free: 
-```
-VM.Standard.E2.1.Micro
-```
+- Shape for Always Free: `VM.Standard.E2.1.Micro`
 
-Alternative Shape could be:
-```
-VM.Standard.E2.Flex, VM.Standard.E3.Flex, VM.Standard.E4.Flex
-```
+- Alternative Shape could be: `VM.Standard.E2.Flex, VM.Standard.E3.Flex, VM.Standard.E4.Flex`
 
-Virtual cloud network: 
-```
-nature
-```
+- Virtual cloud network: `nature`
 
-Subnet: 
-```
-Public Subnet-nature
-```
+- Subnet: `Public Subnet-nature`
 
-Assign a public IPv4 address: 
-```
-Yes
-```
+- Assign a public IPv4 address: `Yes`
 
 ![Instance Values](images/compute_create_values.png)
 
@@ -180,7 +146,7 @@ Click on the Cloud Shell **menu** icon and then in **Upload**.
 
 Click on **select from your computer**. And select the private key you downloaded for the compute instance.
 
-> You don't need to upload the public key (`.pub` file), but feel free to do it.
+>Note: You don't need to upload the public key (`.pub` file), but feel free to do it.
 
 ![Cloud Shell terminal](images/cloud_shell_select_file.png)
 
@@ -276,11 +242,7 @@ Click **Create Bucket**.
 
 Change the bucket name, leave everything else by default.
 
-Bucket Name: 
-
-```
-bucket-study
-```
+- Bucket Name: `bucket-study`
 
 Click **Create**.
 

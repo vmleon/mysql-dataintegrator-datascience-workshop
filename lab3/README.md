@@ -118,17 +118,9 @@ Click **+ Another Statement**.
 
 Add two more statements and make sure you replace `DATA_INTEGRATION_WORKSPACE_OCID` with the Workspace OCID: 
 
-The first statement:
+- The first statement: `allow any-user to use buckets in tenancy where ALL {request.principal.type='disworkspace', request.principal.id='DATA_INTEGRATION_WORKSPACE_OCID'}`
 
-```
-allow any-user to use buckets in tenancy where ALL {request.principal.type='disworkspace', request.principal.id='DATA_INTEGRATION_WORKSPACE_OCID'}
-```
-
-The second statement:
-
-```
-allow any-user to manage objects in tenancy where ALL {request.principal.type='disworkspace',request.principal.id='DATA_INTEGRATION_WORKSPACE_OCID'}
-```
+- The second statement: `allow any-user to manage objects in tenancy where ALL {request.principal.type='disworkspace',request.principal.id='DATA_INTEGRATION_WORKSPACE_OCID'}`
 
 Click **Save Changes**.
 
@@ -177,15 +169,15 @@ Click on Tenancy.
 ![](images/profile_tenancy_menu.png)
 
 Tenancy details contain a lot of interesting information, among others:
-- Your Home Region
-- Your **CSI number** for creating support tickets
+- Your Home Region.
+- Your **CSI number** for creating support tickets.
 - Also, your **Object Storage Namespace**. 
 
 At this point, we are interested in the Tenancy OCID. Copy the OCID by clicking on **Copy**. Write it down for the next step.
 
 ![](images/tenancy.png)
 
-> You can see that the Object Storage Namespace is here, too, in case you need it in the future.
+>Note: You can see that the Object Storage Namespace is here, too, in case you need it in the future.
 
 Let's create the Data Asset now.
 
@@ -211,35 +203,15 @@ Click **Create Data Asset**.
 
 Fill the fields as follows:
 
-Name: 
+- Name: `bucket-study`
 
-```
-bucket-study
-```
+- Description: `Object Storage Bucket with fish survey`
 
-Description: 
+- Type: `Oracle Object Storage`
 
-```
-Object Storage Bucket with fish survey
-```
+- URL: `https://objectstorage.<REGION>.oraclecloud.com`
 
-Type: 
-
-```
-Oracle Object Storage
-```
-
-URL: 
-
-```
-https://objectstorage.<REGION>.oraclecloud.com
-```
-
-Tenancy OCID: 
-
-```
-ocid1.tenancy.oc1..muahahahahahahahaha
-```
+- Tenancy OCID: `ocid1.tenancy.oc1..muahahahahahahahaha`
 
 Click outside the Tenancy OCID field, and after few seconds, and OS Namespace will be retrieved automatically.
 
@@ -263,53 +235,21 @@ Click **Create Data Assets** again.
 
 This time we are going to create the MySQL database asset with the following values:
 
-Name: 
+- Name: `mysql-database`
 
-```
-mysql-database
-```
+- Description: `MySQL Database for Analytics`
 
-Description: 
+- Type: `MySQL`
 
-```
-MySQL Database for Analytics
-```
+- Host (from MySQL created instance): `10.0.1.x`
 
-Type: 
+- Port: `3306`
 
-```
-MySQL
-```
+- Database: `nature`
 
-Host (from MySQL created instance): 
+- User: `root`
 
-```
-10.0.1.x
-```
-
-Port: 
-
-```
-3306
-```
-
-Database: 
-
-```
-nature
-```
-
-User: 
-
-```
-root
-```
-
-Password: 
-
-```
-R2d2&C3po!
-```
+- Password: `R2d2&C3po!`
 
 ![](images/dataasset_mysql_fields1.png)
 

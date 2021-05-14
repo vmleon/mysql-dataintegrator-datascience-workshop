@@ -16,20 +16,11 @@ Click **Create Dynamic Group**.
 
 Set the following values:
 
-Name:
-```
-datascience
-```
+- Name: `datascience`
 
-Description:
-```
-Data Science Dynamic Group
-```
+- Description: `Data Science Dynamic Group`
 
-Rule 1 (Matching Rules):
-```
-ALL { resource.type = 'datasciencenotebooksession' }
-```
+- Rule 1 (Matching Rules): `ALL { resource.type = 'datasciencenotebooksession' }`
 
 Click **Create**.
 
@@ -55,23 +46,14 @@ Make sure you are in the `root` compartment.
 
 Use the following information:
 
-Name:
-```
-datascience
-```
+- Name: `datascience`
 
-Description:
-```
-Data Science to use network resources
-```
+- Description: `Data Science to use network resources`
 
-Toggle **Show manual editor**
-
-Policy Builder:
-```
-allow service datascience to use virtual-network-family in tenancy
-allow dynamic-group datascience to manage data-science-family in tenancy
-```
+- Policy Builder: 
+  - Toggle **Show manual editor**
+  - `allow service datascience to use virtual-network-family in tenancy`
+  - `allow dynamic-group datascience to manage data-science-family in tenancy`
 
 Click **Create**.
 
@@ -81,14 +63,12 @@ The Policy for Data Science has been created.
 
 ![](images/ds_policies_create_review.png)
 
-> If you have created an Oracle Cloud Account to do the workshop, you are already the Administrator. You DO NOT NEED TO DO THIS STEP.
+>Note:  If you have created an Oracle Cloud Account to do the workshop, you are already the Administrator. You DO NOT NEED TO DO THIS STEP.
 > 
 > In case you are a Non-admin user, you will need to set up some more policies to allow the group you belong to. Ask your administrator.
 > 
-> ```
-> allow group <data-scientists> to use virtual-network-family in tenancy
-> allow group <data-scientists> to manage data-science-family in tenancy
-> ```
+> - `allow group <data-scientists> to use virtual-network-family in tenancy`
+> - `allow group <data-scientists> to manage data-science-family in tenancy`
 
 ---
 
@@ -104,15 +84,9 @@ Click **Create Project**.
 
 Set the name and description as follows:
 
-Name: 
-```
-Nature
-```
+- Name: `Nature`
 
-Description: 
-```
-Fish Survey notebook
-```
+- Description: `Fish Survey notebook`
 
 Click **Create**.
 
@@ -124,35 +98,15 @@ The next step is to create a Notebook, click **Create Notebook Session**.
 
 Set the following values:
 
-Name: 
+- Name: `Fish Survey`
 
-```
-Fish Survey
-````
+- Compute Instance Shape (but other compatible shapes would work as well): `VM.Standard.E2.2`
 
-Compute Instance Shape (but other compatible shapes would work as well): 
+- Block Storage Size: `50`
 
-```
-VM.Standard.E2.2
-```
+- VCN: `nature`
 
-Block Storage Size: 
-
-```
-50
-````
-
-VCN: 
-
-```
-nature
-````
-
-Subnet: 
-
-```
-Private Subnet-nature
-````
+- Subnet: `Private Subnet-nature`
 
 Click **Create**.
 

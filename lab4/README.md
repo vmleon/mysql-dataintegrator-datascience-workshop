@@ -16,23 +16,11 @@ Click **Create Data Flow**.
 
 Set the Name, Project and Description in the New Data Flow Panel
 
-Name: 
+- Name: `CSV to MySQL`
 
-```
-CSV to MySQL
-```
+- Project or Folder: `My First Project`
 
-Project or Folder: 
-
-```
-My First Project
-```
-
-Description: 
-
-```
-Data Flow from CSV on Object Storage to MySQL Database
-```
+- Description: `Data Flow from CSV on Object Storage to MySQL Database`
 
 To select the Project, click on `My First Project` and **Select**.
 
@@ -48,33 +36,15 @@ From the Operators panel, drag and drop the Source icon into the canvas.
 
 Set the Identifier and the rest of the info in the **Details** tab from the Source Properties panel:
 
-Identifier: 
+- Identifier: `FISH_SURVEY`
 
-```
-FISH_SURVEY
-```
+- Data Asset: `bucket-study`
 
-Data Asset: 
+- Connection: `Default Connection`
 
-```
-bucket-study
-```
+- Schema: `bucket-study`
 
-Connection: 
-
-```
-Default Connection
-```
-
-Schema: 
-
-```
-bucket-study
-```
-
-Data entity: 
-
-Click **Browse By Name** and select `reef_life_survey_fish.csv`; all the default values are good, click **Select**.
+- Data entity: Click **Browse By Name** and select `reef_life_survey_fish.csv`; all the default values are good, click **Select**.
 
 Set the Identifier and then go to Data Asset and click Select.
 
@@ -123,35 +93,15 @@ Drag and Drop the **Target** icon into the canvas.
 
 Set the Identifier and the rest of the info in the Target:
 
-Identifier: 
+- Identifier: `MySQL DB`
 
-```
-MySQL DB
-```
+- Data Asset: `mysql-database`
 
-Data Asset: 
+- Connection: `Default Connection`
 
-```
-mysql-database
-```
+- Schema: `nature`
 
-Connection: 
-
-```
-Default Connection
-```
-
-Schema: 
-
-```
-nature
-```
-
-Data entity: 
-
-```
-fish
-```
+- Data entity: `fish`
 
 ![](images/dataflow_target_id.png)
 
@@ -203,29 +153,13 @@ Go back to Home and Click **Create Integration Task**.
 
 Set the Name and the rest of the info as follows:
 
-Name: 
+- Name: `IntegrationTaskMySQL`
 
-```
-IntegrationTaskMySQL
-```
+- Description: `Integration Task MySQL`
 
-Description: 
+- Project or Folder: `My First Project`
 
-```
-Integration Task MySQL
-```
-
-Project or Folder: 
-
-```
-My First Project
-```
-
-Data Flow: 
-
-```
-CSV to MySQL
-```
+- Data Flow: `CSV to MySQL`
 
 ![](images/integrationtask_fields.png)
 

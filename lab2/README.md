@@ -16,91 +16,39 @@ Make sure your root compartment (or the one you want) is selected.
 
 ![](images/mysql_create_button.png)
 
-Name your MySQL instance
+- Name your MySQL instance: `mysql-analytics`
 
-Name: 
-
-```
-mysql-analytics
-```
-
-Description (optional): 
-
-```
-MySQL instance for Analytics
-```
+- Description (optional): `MySQL instance for Analytics`
 
 Between the three options, pick `HeatWave`. `Standalone` will work for the test, but it doesn't include the Analytics Engine that will improve performance for Analytics.
 
-For Username and password
+For Username and password:
 
-Username: 
+- Username: `root`
 
-```
-root
-```
+- Password: `R2d2&C3po!`
 
-Password: 
-
-```
-R2d2&C3po!
-```
-
-Confirm Password: 
-
-```
-R2d2&C3po!
-```
+- Confirm Password: `R2d2&C3po!`
 
 ![](images/mysql_create_db_fields.png)
 
 Network configuration:
 
-Virtual Cloud Network: 
+- Virtual Cloud Network: `nature`
 
-```
-nature
-```
-
-Subnet: 
-
-```
-Private Subnet-nature (Regional)
-```
+- Subnet: `Private Subnet-nature (Regional)`
 
 ![](images/mysql_vcn_fields.png)
 
 Everything else is good by default:
 
-Configure placement: 
+- Configure placement: `AD-1`
 
-```
-AD-1
-```
+- Configure hardware: `MySQL.HeatWave.VM.Standard.E3` or Standalone (selected above) `MySQL.VM.Standard.E3.1.8GB`
 
-Configure hardware: 
+- Data Storage Size (GB): `50`
 
-```
-MySQL.HeatWave.VM.Standard.E3
-```
-
-or Standalone (selected above)
-
-```
-MySQL.VM.Standard.E3.1.8GB
-```
-
-Data Storage Size (GB): 
-
-```
-50
-```
-
-Configure Backups: 
-
-```
-Enable Automatic Backups
-```
+- Configure Backups: `Enable Automatic Backups`
 
 Click **Create**.
 
@@ -122,22 +70,13 @@ Connect with Cloud Shell (if you close it or it is no longer active).
 
 ![](images/cloud_shell.png)
 
-SSH into the bastion host:
+- SSH into the bastion host: `ssh -i ~/.ssh/bastion opc@PUBLIC_IP`
 
-```
-ssh -i ~/.ssh/bastion opc@PUBLIC_IP
-```
+- Run MySQL Shell (repalce `PRIVATE_IP` with your MDS IP value): `curl https://raw.githubusercontent.com/vmleon/mysql-dataintegrator-datascience-workshop/main/lab2/files/create_fish_survey.sql | mysqlsh --sql root@10.0.1.112`
 
-Run MySQL Shell (repalce `PRIVATE_IP` with your MDS IP value):
-```
-curl https://raw.githubusercontent.com/vmleon/mysql-dataintegrator-datascience-workshop/main/lab2/files/create_fish_survey.sql | mysqlsh --sql root@10.0.1.112
-```
+It will ask for the password (`Please provide the password for 'root@PRIVATE_IP':`). 
 
-It will ask for the password (`Please provide the password for 'root@PRIVATE_IP':`). Type the MySQL DB password:
-
-```
-R2d2&C3po!
-```
+- Type the MySQL DB password: `R2d2&C3po!`
 
 If there is no error on the console, everything is ready to proceed.
 
