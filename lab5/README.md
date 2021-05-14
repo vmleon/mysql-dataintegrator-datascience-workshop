@@ -1,4 +1,4 @@
-# Lab 5: Transform your Data into Insights
+# Transform your Data into Insights
 
 ![Data Science](images/ds_banner.jpg)
 
